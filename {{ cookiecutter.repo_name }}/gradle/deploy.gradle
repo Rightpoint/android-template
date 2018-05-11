@@ -1,0 +1,121 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
+
+hockeyapp {
+    apiToken = propOrEmpty('HOCKEYAPP_TOKEN')
+    notesType = 1       // Markdown
+    notify = 0
+    releaseType = 2     // Alpha
+    status = 2          // Available for download
+    variantToNotes = [
+            developRelease: releaseNotes { getTheLastTwoGitMerges() },
+            sprintRelease: releaseNotes { getTheLastTwoGitTags() },
+            betaRelease: releaseNotes { getTheLastTwoReleaseTags() }
+    ]
+    variantToApplicationId = [
+            developRelease: propOrEmpty('HOCKEYAPP_ID_DEVELOP'),
+            sprintRelease: propOrEmpty('HOCKEYAPP_ID_SPRINT'),
+            betaRelease: propOrEmpty('HOCKEYAPP_ID_BETA')
+    ]
+}
+
+/**
+ * @return The git hashes of the last two merge commits.
+ */
+static String getTheLastTwoGitMerges() {
+    return executeCommand("git rev-list --min-parents=2 --max-count=2 HEAD")
+}
+
+/**
+ * @return The last two git tags
+ */
+static String getTheLastTwoGitTags() {
+    return executeCommand("git tag | sort -r | head -2")
+}
+
+/**
+ * @return The last two git tags that specifically start with "release-"
+ */
+static String getTheLastTwoReleaseTags() {
+    return executeCommand("git tag -l release-* | sort -r | head -2")
+}
+
+/**
+ * Execute shell command on Groovy/Gradle
+ *
+ * @param command
+ * @return The output of the shell command
+ */
+static String executeCommand(String command) {
+    return ["sh", "-c", command].execute().text.trim()
+}
+
+static String releaseNotes(Closure<String> commandToExecute) {
+    def inputs = generateInputs(commandToExecute)
+    def command = createGitLogCommand(inputs)
+    return "${createHeader()}\n${executeCommand(command)}"
+}
+
+static String generateInputs(Closure<String> commandToExecute) {
+    def lines = commandToExecute().readLines()
+
+    if (lines.isEmpty()) return lines
+
+    def last = lines.last()
+    def first = lines.first()
+
+    def builder = new StringBuilder().append(last).append("..")
+
+    if (last != first) {
+        builder.append(first)
+    }
+
+    return builder.toString()
+}
+
+/**
+ * @param inputs
+ * @return A formatted list of commits based on the inputs
+ */
+static String createGitLogCommand(String inputs) {
+    return "git log --pretty=format:'* [%ad] %s (%an)' --date=short ${inputs}"
+}
+
+/**
+ * Provides a header formatted specifically for Markdown included as part of the release notes
+ * to be uploaded to HockeyApp along with the APK.</br>
+ * An example of the expected header:</br>
+ * <code>
+ *     **Built on:** Fri 16-Feb-2018 02:50 PM
+ *     **Branch:** develop
+ *     **Commit:** a6dbf032
+ * </code>
+ *
+ * @return Generated header for the release notes on HockeyApp
+ */
+static String createHeader() {
+    def formatter = new SimpleDateFormat("E dd-MMM-yyyy hh:mm a")
+    def dateTime = formatter.format(new Date())
+
+    return new StringBuilder().append("**Built on:** ${dateTime}")
+            .append("\n")
+            .append("**Branch:** ${getBranch()}")
+            .append("\n")
+            .append("**Commit:** ${getCommit()}")
+            .toString()
+}
+
+/**
+ * @return The current git branch
+ */
+static String getBranch() {
+    return 'git rev-parse --abbrev-ref HEAD'.execute().text.trim()
+}
+
+/**
+ * @return The current git branch's hash
+ */
+static String getCommit() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}

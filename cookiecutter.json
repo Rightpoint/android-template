@@ -1,0 +1,10 @@
+{
+  "company_name": "Raizlabs",
+  "app_name": "Project Name",
+  "repo_name": "{{ cookiecutter.app_name | replace(' ', '-') | lower }}-android",
+  "package_name": "com.{{ cookiecutter.company_name | replace(' ', '') | replace('-', '') | lower }}.{{ cookiecutter.app_name | replace(' ', '') | replace('-', '') | lower }}",
+  "package_dir": "{{ cookiecutter.package_name | replace('.', '/') }}",
+  "caching_library": ["Room", "Realm"],
+  "launch_studio": ["false", "true"],
+  "_copy_without_render": [".gradle", "gradle/", "*gradlew", "*gradlew.bat"]
+}

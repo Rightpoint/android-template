@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+
+if (isCiBuild) {
+    apply from: "${project.rootDir}/gradle/deploy.gradle"
+}
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        applicationId "{{ cookiecutter.package_name }}"
+        testApplicationId "{{ cookiecutter.package_name }}.test"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.code
+        versionName buildConfig.name
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        develop {
+            storeFile file("${project.rootDir}/keystores/{{ cookiecutter.app_name | replace(' ', '') | lower }}Develop.jks")
+            storePassword propOrEmpty('STORE_PASSWORD')
+            keyAlias '{{ cookiecutter.app_name | replace(' ', '') | lower }}Develop'
+            keyPassword propOrEmpty('KEY_PASSWORD')
+        }
+
+        sprint {
+            storeFile file("${project.rootDir}/keystores/{{ cookiecutter.app_name | replace(' ', '') | lower }}Sprint.jks")
+            storePassword propOrEmpty('STORE_PASSWORD')
+            keyAlias '{{ cookiecutter.app_name | replace(' ', '') | lower }}Sprint'
+            keyPassword propOrEmpty('KEY_PASSWORD')
+        }
+
+        beta {
+            storeFile file('${project.rootDir}/keystores/{{ cookiecutter.app_name | replace(' ', '') | lower }}Beta.jks')
+            storePassword propOrEmpty('STORE_PASSWORD')
+            keyAlias '{{ cookiecutter.app_name | replace(' ', '') | lower }}Beta'
+            keyPassword propOrEmpty('KEY_PASSWORD')
+        }
+    }
+
+    flavorDimensions "track"
+
+    productFlavors {
+        develop {
+            dimension "track"
+            applicationIdSuffix ".develop"
+            signingConfig signingConfigs.develop
+        }
+        sprint {
+            dimension "track"
+            applicationIdSuffix ".sprint"
+            signingConfig signingConfigs.sprint
+        }
+        beta {
+            dimension "track"
+            signingConfig signingConfigs.beta
+        }
+    }
+
+    sourceSets {
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    androidTestImplementation libs.android.test.espresso.core
+    androidTestImplementation libs.android.test.espresso.contrib
+    androidTestImplementation libs.android.test.rules
+    androidTestImplementation libs.android.test.runner
+
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':device')
+
+    implementation libs.kotlin.stdlib
+    implementation libs.android.x.coreKtx
+    implementation libs.android.support.annotations
+    implementation libs.android.support.design
+    implementation libs.android.support.coreUtils
+    implementation libs.android.support.constraintLayout
+
+    implementation libs.dagger.runtime
+    kapt libs.dagger.compiler
+    implementation libs.dagger.android.support
+    kapt libs.dagger.android.processor
+
+    implementation libs.rx.android
+    implementation libs.rx.binding.kotlin
+    implementation libs.rx.relay
+
+    implementation libs.timber
+
+    testImplementation libs.junit
+}

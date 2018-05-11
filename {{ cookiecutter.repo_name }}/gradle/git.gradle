@@ -1,0 +1,12 @@
+task installGitHooks(type: Exec) {
+    group 'config'
+    description 'Installs pre-defined git hooks'
+    commandLine 'cp', '-R', 'git/.', '.git/hooks/'
+}
+
+task configureGitHooks(type: Exec) {
+    group 'config'
+    description 'Sets the appropriate read/write permissions on the git hooks'
+    dependsOn installGitHooks
+    commandLine 'chmod', '-R', '777', '.git/hooks/'
+}

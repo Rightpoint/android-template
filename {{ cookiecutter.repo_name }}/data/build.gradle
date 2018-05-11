@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+
+    }
+}
+
+dependencies {
+    implementation project(":domain")
+    {% if cookiecutter.caching_library == "Realm" %}
+    api project(':cache-realm')
+    {% elif cookiecutter.caching_library == "Room" %}
+    api project(':cache-room')
+    {% endif %}
+
+    api project(':remote')
+
+    // Android
+    implementation libs.android.support.annotations
+
+    // Dagger
+    implementation libs.dagger.runtime
+    kapt libs.dagger.compiler
+
+    // Kotlin
+    implementation libs.kotlin.stdlib
+
+    // Rx
+    implementation libs.rx.java
+    implementation libs.rx.android
+
+    testImplementation libs.junit
+}

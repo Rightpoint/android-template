@@ -1,0 +1,9 @@
+android {
+    lintOptions {
+        abortOnError true
+        xmlReport false
+        htmlReport true
+        htmlOutput file("${project.buildDir}/reports/lint/lint-result.html")
+        xmlOutput file("${project.buildDir}/reports/lint/lint-result.xml")
+    }
+}

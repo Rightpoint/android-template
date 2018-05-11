@@ -1,0 +1,1 @@
+<manifest package="{{ cookiecutter.package_name }}.data"/>
