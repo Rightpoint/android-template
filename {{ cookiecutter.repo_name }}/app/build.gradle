@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
 
 if (isCiBuild) {
     apply from: "${project.rootDir}/gradle/deploy.gradle"
