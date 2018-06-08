@@ -1,18 +1,25 @@
-# Android template
+# Android Template
 [![CircleCI](https://circleci.com/gh/Raizlabs/android-template.svg?style=svg&circle-token=963d814d921ee2f1f3c00d9079b362c94ac257a9)](https://circleci.com/gh/Raizlabs/android-template)
 ![Android](https://img.shields.io/badge/platform-android-green.svg)
 
-A template for new Android projects at Raizlabs using Clean Architecture.
+A template for new Android projects at Raizlabs using Clean Architecture. As this repo is public for the Android communtity, **avoid referencing client names in commit messages, issues, PRs, etc.**
 
 Inspired by [thoughtbot]/[android-template]
 
 [thoughtbot]: https://thoughtbot.com/
 [android-template]: https://github.com/thoughtbot/android-template
-### Sections
-* [Contributing](#contributing)
-* [Usage](#usage)
-* [Post Generation](#post-generation)
 
+## What's in the template?
+
+ - Configures the company name, project name, repo name, package name, and gitignore.
+ - Option to use [Room](https://developer.android.com/topic/libraries/architecture/room) or [Realm](https://realm.io/).
+ - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Moshi, and Timber. View the [dependencies.gradle](https://github.com/Raizlabs/android-template/blob/develop/%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/dependencies.gradle) for a complete list.
+ - Modules for separation of concerns in accordance with Clean Architecture.
+ - Proguard configuration.
+ - Signing configs and products flavors for `develop`, `sprint`, and `beta` tracks.
+ - Commit hook to format code.
+ - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](https://github.com/Raizlabs/android-template/blob/develop/%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/deploy.gradle).
+ 
 ## Contributing
 [Submit](https://github.com/Raizlabs/android-template/issues) an issue. If it is agreed the change needs to be made, [submit](https://github.com/Raizlabs/android-template/pulls) a pull request.
 
