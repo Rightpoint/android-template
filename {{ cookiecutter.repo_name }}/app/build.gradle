@@ -107,6 +107,8 @@ dependencies {
     implementation libs.rx.binding.kotlin
     implementation libs.rx.relay
 
+    implementation libs.autodispose
+
     implementation libs.timber
 
     testImplementation libs.junit
