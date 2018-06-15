@@ -16,6 +16,7 @@ Inspired by [thoughtbot]/[android-template]
  - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Moshi, and Timber. View the [dependencies.gradle](https://github.com/Raizlabs/android-template/blob/develop/%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/dependencies.gradle) for a complete list.
  - Modules for separation of concerns in accordance with Clean Architecture.
  - Proguard configuration.
+ - CircleCi configuration.
  - Signing configs and products flavors for `develop`, `sprint`, and `beta` tracks.
  - Commit hook to format code.
  - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](https://github.com/Raizlabs/android-template/blob/develop/%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/deploy.gradle).
