@@ -50,6 +50,13 @@ android {
             keyAlias '{{ cookiecutter.app_name | replace(' ', '') | lower }}Beta'
             keyPassword propOrEmpty('KEY_PASSWORD')
         }
+        
+        production {
+            storeFile file('${project.rootDir}/keystores/{{ cookiecutter.app_name | replace(' ', '') | lower }}Production.jks')
+            storePassword propOrEmpty('STORE_PASSWORD')
+            keyAlias '{{ cookiecutter.app_name | replace(' ', '') | lower }}Production'
+            keyPassword propOrEmpty('KEY_PASSWORD')
+        }
     }
 
     flavorDimensions "track"
@@ -68,6 +75,10 @@ android {
         beta {
             dimension "track"
             signingConfig signingConfigs.beta
+        }
+        production {
+            dimension "track"
+            signingConfig signingConfigs.production
         }
     }
 
