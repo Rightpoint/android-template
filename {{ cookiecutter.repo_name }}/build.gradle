@@ -10,6 +10,14 @@ allprojects {
         google()
         jcenter()
     }
+    
+    // Show all compile time errors as per: https://movieos.org/2017/android-room-data-binding-compile-time-errors/
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xmaxerrs" << "4000"
+            options.compilerArgs << "-Xmaxwarns" << "4000"
+        }
+    }
 }
 
 static void applyAndroidPlugins(Project project) {
