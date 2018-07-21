@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_double">
+
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/dp_double"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAppearance="@style/Text.Primary.Body"
+        tools:text="An error occurred retrieving the list of items"/>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/retry"
+        android:textAppearance="@style/Text.Button"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+</LinearLayout>

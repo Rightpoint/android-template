@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# stash any unstaged changes
+git stash -q --keep-index
+
+./gradlew ktlintFormat
+
+# store the last exit code in a variable
+RESULT=$?
+
+FORMATTED="$(git ls-files -m)"
+git add ${FORMATTED}
+
+# unstash the unstashed changes
+git stash pop -q
+
+# return the './gradlew ktlintFormat' exit code
+exit ${RESULT}

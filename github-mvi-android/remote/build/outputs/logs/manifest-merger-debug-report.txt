@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml:1:1-55
+INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml:1:1-55
+INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml:1:1-55
+	package
+		ADDED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml:1:11-53
+		INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+		INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml:1:1-55
+uses-sdk
+INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+		ADDED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+		INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+		ADDED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml
+		INJECTED from /Users/jonathanduran/Documents/dev/android/github-mvi-android/remote/src/main/AndroidManifest.xml

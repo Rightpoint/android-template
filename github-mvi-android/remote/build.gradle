@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+
+    }
+}
+
+dependencies {
+    // Kotlin
+    implementation libs.kotlin.stdlib
+
+    // Dagger
+    implementation libs.dagger.runtime
+    kapt libs.dagger.compiler
+
+    // OkHttp
+    api libs.okhttp.client
+    api libs.okhttp.logging
+
+    // Retrofit
+    api libs.retrofit.client
+    api libs.retrofit.adapterRxJava2
+    api libs.retrofit.converterMoshi
+
+    // Moshi
+    implementation libs.moshi
+
+    // Kotshi
+    implementation libs.kotshi.api
+    kapt libs.kotshi.compiler
+
+    // RxJava
+    implementation libs.rx.java
+
+    // Timber
+    implementation libs.timber
+}
