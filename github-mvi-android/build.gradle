@@ -10,14 +10,6 @@ allprojects {
         google()
         jcenter()
     }
-    
-    // Show all compile time errors as per: https://movieos.org/2017/android-room-data-binding-compile-time-errors/
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xmaxerrs" << "4000"
-            options.compilerArgs << "-Xmaxwarns" << "4000"
-        }
-    }
 }
 
 static void applyAndroidPlugins(Project project) {
@@ -44,7 +36,6 @@ subprojects { subProject ->
 
     subProject.apply plugin: "org.jlleitschuh.gradle.ktlint"
     subProject.ktlint {
-        version = versions.ktlint
         android = true
         outputToConsole = true
         reporters = ["CHECKSTYLE", "JSON"]
@@ -82,14 +73,12 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.3.0-alpha06'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
-        classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:3.0.1"
+        classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:3.3.0"
 
-        {% if cookiecutter.caching_library == "Realm" %}
-        classpath "io.realm:realm-gradle-plugin:5.0.0"
-        {% endif %}
+        
     }
     
     configurations.all {

@@ -1,0 +1,8 @@
+include ':app'
+include ':data'
+include ':device'
+include ':domain'
+include ':remote'
+
+
+include ':cache-room'

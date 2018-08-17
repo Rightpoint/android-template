@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GithubExample</string>
+    <string name="retry">Retry</string>
+</resources>

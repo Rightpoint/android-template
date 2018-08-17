@@ -1,0 +1,122 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
+
+if (isCiBuild) {
+    apply from: "${project.rootDir}/gradle/deploy.gradle"
+}
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        applicationId "com.rightpoint.github.mvi"
+        testApplicationId "com.rightpoint.github.mvi.test"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode buildConfig.code
+        versionName buildConfig.name
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        develop {
+            storeFile file("${project.rootDir}/keystores/githubexampleDevelop.jks")
+            storePassword propOrEmpty('STORE_PASSWORD')
+            keyAlias 'githubexampleDevelop'
+            keyPassword propOrEmpty('KEY_PASSWORD')
+        }
+
+        sprint {
+            storeFile file("${project.rootDir}/keystores/githubexampleSprint.jks")
+            storePassword propOrEmpty('STORE_PASSWORD')
+            keyAlias 'githubexampleSprint'
+            keyPassword propOrEmpty('KEY_PASSWORD')
+        }
+
+        beta {
+            storeFile file('${project.rootDir}/keystores/githubexampleBeta.jks')
+            storePassword propOrEmpty('STORE_PASSWORD')
+            keyAlias 'githubexampleBeta'
+            keyPassword propOrEmpty('KEY_PASSWORD')
+        }
+    }
+
+    flavorDimensions "track"
+
+    productFlavors {
+        develop {
+            dimension "track"
+            applicationIdSuffix ".develop"
+            signingConfig signingConfigs.develop
+        }
+        sprint {
+            dimension "track"
+            applicationIdSuffix ".sprint"
+            signingConfig signingConfigs.sprint
+        }
+        beta {
+            dimension "track"
+            signingConfig signingConfigs.beta
+        }
+    }
+
+    sourceSets {
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    androidTestImplementation libs.android.test.espresso.core
+    androidTestImplementation libs.android.test.espresso.contrib
+    androidTestImplementation libs.android.test.rules
+    androidTestImplementation libs.android.test.runner
+
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':device')
+
+    implementation libs.kotlin.stdlib
+    implementation libs.android.arch.lifecycle.extensions
+    implementation libs.android.x.core.ktx
+    implementation libs.android.support.annotations
+    implementation libs.android.support.design
+    implementation libs.android.support.coreUtils
+    implementation libs.android.support.constraintLayout
+
+    implementation libs.glide.runtime
+    kapt libs.glide.compiler
+
+    implementation libs.dagger.runtime
+    kapt libs.dagger.compiler
+    implementation libs.dagger.android.support
+    kapt libs.dagger.android.processor
+
+    implementation libs.rx.android
+    implementation libs.rx.binding.kotlin
+    implementation libs.rx.java
+    implementation libs.rx.kotlin
+    implementation libs.rx.relay
+
+    implementation libs.autodispose.kotlin.base
+    implementation libs.autodispose.kotlin.arch
+
+    implementation libs.timber
+
+    testImplementation libs.junit
+}

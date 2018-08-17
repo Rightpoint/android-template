@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_zero">0dp</dimen>
+    <dimen name="dp_eighth">1dp</dimen>
+    <dimen name="dp_quarter">2dp</dimen>
+    <dimen name="dp_half">4dp</dimen>
+    <dimen name="dp_single">8dp</dimen>
+    <dimen name="dp_double">16dp</dimen>
+    <dimen name="dp_triple">24dp</dimen>
+    <dimen name="dp_quad">32dp</dimen>
+    <dimen name="dp_pent">40dp</dimen>
+    <dimen name="dp_hex">48dp</dimen>
+    <dimen name="dp_hep">56dp</dimen>
+    <dimen name="dp_oct">64dp</dimen>
+    <dimen name="dp_non">72dp</dimen>
+    <dimen name="dp_dec">80dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+
+    <dimen name="sp_single">8sp</dimen>
+    <dimen name="sp_caption">12sp</dimen>
+    <dimen name="sp_body">14sp</dimen>
+    <dimen name="sp_subheading">16sp</dimen>
+    <dimen name="sp_heading">18sp</dimen>
+    <dimen name="sp_number">18sp</dimen>
+    <dimen name="sp_title">20sp</dimen>
+    <dimen name="sp_headline">24sp</dimen>
+    <dimen name="sp_non">72sp</dimen>
+
+</resources>
