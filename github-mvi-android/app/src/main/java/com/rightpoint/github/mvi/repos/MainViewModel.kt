@@ -12,15 +12,15 @@ class MainViewModel @Inject constructor(
     private val getListOfRepos: GetListOfRepos
 ) : ViewModel() {
 
-    fun model(): ObservableTransformer<Intent, State> {
+    fun model(): ObservableTransformer<Action, State> {
         return ObservableTransformer { upstream ->
             upstream.flatMap(this::getListOfRepos)
         }
     }
 
-    private fun getListOfRepos(intent: Intent): Observable<State> {
-        Timber.i("Intent: %s", intent)
-        return getListOfRepos.execute(GetListOfRepos.Params(intent.owner))
+    private fun getListOfRepos(action: Action): Observable<State> {
+        Timber.i("Action: %s", action)
+        return getListOfRepos.execute(GetListOfRepos.Params(action.owner))
             .toObservable()
             .map(this::mapToViewModel)
             .map<State>(State::Loaded)

@@ -109,6 +109,7 @@ dependencies {
 
     implementation libs.rx.android
     implementation libs.rx.binding.kotlin
+    implementation libs.rx.java
     implementation libs.rx.kotlin
     implementation libs.rx.relay
 

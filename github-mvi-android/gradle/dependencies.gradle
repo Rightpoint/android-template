@@ -15,8 +15,8 @@ ext.buildConfig         = buildConfig
 
 
 def versions            = [:]
-versions.kotlin         = '1.2.51'
-versions.supportLibrary = '28.0.0-alpha3'
+versions.kotlin         = '1.2.60'
+versions.supportLibrary = '28.0.0-rc01'
 versions.arch           = '1.1.1'
 versions.archRoom       = '1.1.1'
 versions.atsl           = '1.0.1'

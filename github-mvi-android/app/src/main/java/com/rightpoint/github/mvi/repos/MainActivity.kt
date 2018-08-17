@@ -23,7 +23,7 @@ class MainActivity : DaggerAppCompatActivity(), Consumer<State> {
     @Inject lateinit var factory: ViewModelProvider.Factory
     private lateinit var viewModel: MainViewModel
     private val adapter = BaseAdapter<Item>()
-    private val intents = PublishRelay.create<Intent>()
+    private val actions = PublishRelay.create<Action>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +43,11 @@ class MainActivity : DaggerAppCompatActivity(), Consumer<State> {
 
     override fun onResume() {
         super.onResume()
-        intents.compose(viewModel.model())
+        actions.compose(viewModel.model())
             .doOnDispose { Timber.i("This is being disposed") }
             .autoDisposable(lifecycle.scope())
             .subscribe(this::accept, Timber::e)
-        intents.accept(Intent("Raizlabs"))
+        actions.accept(Action("Raizlabs"))
     }
 
     override fun accept(state: State) {
@@ -58,7 +58,7 @@ class MainActivity : DaggerAppCompatActivity(), Consumer<State> {
                 val item = StateItem(
                     state = state,
                     onRetry = {
-                        intents.accept(Intent("Raizlabs"))
+                        actions.accept(Action("Raizlabs"))
                     }
                 )
                 val singletonList = Collections.singletonList<Item>(item)
