@@ -23,20 +23,68 @@ download_dependencies: &download_dependencies
   name: Download Dependencies
   command: ./gradlew dependencies --no-daemon
 
-run_tests: &run_tests
+run_develop_tests: &run_develop_tests
   name: Run Tests
-  command: ./gradlew check --no-daemon
+  command: ./gradlew testDevelopReleaseUnitTest domain:test --no-daemon
 
-reports_artifacts: &reports_artifacts
-  path: app/build/reports
+run_sprint_tests: &run_sprint_tests
+  name: Run Tests
+  command: ./gradlew testSprintReleaseUnitTest domain:test --no-daemon
+
+run_prod_tests: &run_prod_tests
+  name: Run Tests
+  command: ./gradlew testProductionReleaseUnitTest domain:test --no-daemon
+
+run_develop_lint: &run_develop_lint
+  name: Run Lint
+  command: ./gradlew app:lintDevelopRelease --no-daemon
+
+run_sprint_lint: &run_sprint_lint
+  name: Run Lint
+  command: ./gradlew app:lintSprintRelease --no-daemon
+
+run_prod_lint: &run_prod_lint
+  name: Run Lint
+  command: ./gradlew app:lintProductionRelease --no-daemon
+
+run_develop_styling: &run_develop_styling
+  name: Checkstyle
+  command: ./gradlew ktlintDevelopReleaseCheck domain:ktlintCheck --no-daemon
+
+run_sprint_styling: &run_sprint_styling
+  name: Checkstyle
+  command: ./gradlew ktlintSprintReleaseCheck domain:ktlintCheck --no-daemon
+
+run_prod_styling: &run_prod_styling
+  name: Checkstyle
+  command: ./gradlew ktlintProdutionReleaseCheck domain:ktlintCheck --no-daemon
+
+report_artifacts: &report_artifacts
+  path: reports
   destination: reports
+
+app_artifacts: &app_artifacts
+  path: app/build/reports
+  destination: reports/app
+
+data_artifacts: &data_artifacts
+  path: data/build/reports
+  destination: reports/data
+
+device_artifacts: &device_artifacts
+  path: device/build/reports
+  destination: reports/device
+
+domain_artifacts: &domain_artifacts
+  path: domain/build/reports
+  destination: reports/domain
 
 apk_artifacts: &apk_artifacts
   path: app/build/outputs/apk
   destination: apk
 
 jobs:
-  test:
+  test_develop:
     <<: *defaults
     steps:
       - run:
@@ -51,7 +99,7 @@ jobs:
           <<: *download_dependencies
 
       - run:
-          <<: *run_tests
+          <<: *run_develop_tests
 
       - save_cache:
           <<: *cache_key
@@ -60,10 +108,199 @@ jobs:
             - ~/.gradle/wrapper
 
       - store_artifacts:
-          <<: *reports_artifacts
+          <<: *report_artifacts
 
       - store_test_results:
-          path: app/build/test-results
+          path: test-results
+
+  test_sprint:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_sprint_tests
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *report_artifacts
+
+      - store_test_results:
+          path: test-results
+
+  test_prod:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_prod_tests
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *report_artifacts
+
+      - store_test_results:
+          path: test-results
+
+  checkstyle_develop:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_develop_styling
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *app_artifacts
+
+      - store_artifacts:
+          <<: *data_artifacts
+
+      - store_artifacts:
+          <<: *device_artifacts
+
+      - store_artifacts:
+          <<: *domain_artifacts
+
+  checkstyle_sprint:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_sprint_styling
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *app_artifacts
+
+      - store_artifacts:
+          <<: *data_artifacts
+
+      - store_artifacts:
+          <<: *device_artifacts
+
+      - store_artifacts:
+          <<: *domain_artifacts
+
+  checkstyle_prod:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_prod_styling
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *app_artifacts
+
+      - store_artifacts:
+          <<: *data_artifacts
+
+      - store_artifacts:
+          <<: *device_artifacts
+
+      - store_artifacts:
+          <<: *domain_artifacts
+
+  lint_develop:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_develop_lint
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *app_artifacts
 
       - persist_to_workspace:
           root: .
@@ -72,7 +309,73 @@ jobs:
             - build
             - app/build
 
-  develop:
+  lint_sprint:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_sprint_lint
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *app_artifacts
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .gradle
+            - build
+            - app/build
+
+  lint_prod:
+    <<: *defaults
+    steps:
+      - run:
+          <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          <<: *run_prod_lint
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+      - store_artifacts:
+          <<: *app_artifacts
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .gradle
+            - build
+            - app/build
+
+  deploy_develop:
     <<: *defaults
     steps:
       - run:
@@ -99,7 +402,7 @@ jobs:
       - store_artifacts:
           <<: *apk_artifacts
 
-  sprint:
+  deploy_sprint:
     <<: *defaults
     steps:
       - run:
@@ -126,7 +429,7 @@ jobs:
       - store_artifacts:
           <<: *apk_artifacts
 
-  beta:
+  deploy_prod:
     <<: *defaults
     steps:
       - run:
@@ -142,7 +445,7 @@ jobs:
 
       - run:
           name: Deploy to beta track on HockeyApp
-          command: ./gradlew app:uploadBetaReleaseToHockeyApp --info --no-daemon
+          command: ./gradlew app:uploadProductionReleaseToHockeyApp --info --no-daemon
 
       - save_cache:
           <<: *cache_key
@@ -157,27 +460,77 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - test:
+      - lint_develop:
           filters:
             tags:
               only: /.*/
-      - develop:
-          requires:
-            - test
-          filters:
-            branches:
-              only: develop
-      - sprint:
-          requires:
-            - test
+      - lint_sprint:
           filters:
             tags:
               only: /sprint-.*/
             branches:
               ignore: /.*/
-      - beta:
+      - lint_prod:
+          filters:
+            tags:
+              only: /release-.*/
+            branches:
+              ignore: /.*/
+      - checkstyle_develop:
+          filters:
+            tags:
+              only: /.*/
+      - checkstyle_sprint:
+          filters:
+            tags:
+              only: /sprint-.*/
+            branches:
+              ignore: /.*/
+      - checkstyle_prod:
+          filters:
+            tags:
+              only: /release-.*/
+            branches:
+              ignore: /.*/
+      - test_develop:
+          filters:
+            tags:
+              only: /.*/
+      - test_sprint:
+          filters:
+            tags:
+              only: /sprint-.*/
+            branches:
+              ignore: /.*/
+      - test_prod:
+          filters:
+            tags:
+              only: /release-.*/
+            branches:
+              ignore: /.*/
+      - deploy_develop:
           requires:
-            - test
+            - checkstyle_develop
+            - lint_develop
+            - test_develop
+          filters:
+            branches:
+              only: develop
+      - deploy_sprint:
+          requires:
+            - checkstyle_sprint
+            - lint_sprint
+            - test_sprint
+          filters:
+            tags:
+              only: /sprint-.*/
+            branches:
+              ignore: /.*/
+      - deploy_prod:
+          requires:
+            - checkstyle_prod
+            - lint_prod
+            - test_prod
           filters:
             tags:
               only: /release-.*/

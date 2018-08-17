@@ -1,54 +1,32 @@
-static int getVersionCode() {
-    if (System.getenv("CI") != 'true') return 1
+ext.major = 1
+ext.minor = 0
+ext.patch = 0
+ext.build = System.getenv("CIRCLE_BUILD_NUM")
 
-    def lines = ["sh", "-c", "git rev-list --all --count"].execute().text
-            .trim()
-            .readLines()
+def buildConfig         = [:]
+buildConfig.minSdk      = 21
+buildConfig.targetSdk   = 28
+buildConfig.compileSdk  = 28
+buildConfig.buildTools  = "27.0.3"
+buildConfig.code        = (major * 1000000) + (minor * 10000) + (patch * 100) + ((build == null || build.size() == 0) ? 0 : build.toInteger())
+buildConfig.name        = "$major.$minor.$patch.$build"
+ext.buildConfig         = buildConfig
 
-    if (lines.isEmpty()) {
-        return 1
-    } else {
-        return lines.first().toInteger()
-    }
-}
-
-static String getVersionName() {
-    if (System.getenv("CI") != 'true') return "1.0.0"
-
-    def lines = ["sh", "-c", "git describe --tags"].execute().text
-            .trim()
-            .readLines()
-
-    if (lines.isEmpty()) {
-        return "1.0.0"
-    } else {
-        return lines.first()
-    }
-}
-
-ext.buildConfig = [
-        'minSdk'        : 22,
-        'targetSdk'     : 28,
-        'compileSdk'    : 28,
-        'buildTools'    : "27.0.3",
-        'code'          : getVersionCode(),
-        'name'          : getVersionName()
-]
-
-ext.versions = [
-        'kotlin'            : '1.2.51',
-        'supportLibrary'    : '28.0.0-alpha3',
-        'arch'              : '1.1.1',
-        'archRoom'          : '1.0.0',
-        'atsl'              : '1.0.1',
-        'espresso'          : '3.0.1',
-        'dagger'            : '2.16',
-        'okhttp'            : '3.10.0',
-        'retrofit'          : '2.4.0',
-        'rxBinding'         : '2.1.1',
-        'kotshi'            : '1.0.2',
-        'ktlint'            : '0.24.0'
-]
+def versions            = [:]
+versions.kotlin         = '1.2.60'
+versions.supportLibrary = '28.0.0-rc01'
+versions.arch           = '1.1.1'
+versions.archRoom       = '1.1.1'
+versions.atsl           = '1.0.1'
+versions.espresso       = '3.0.1'
+versions.dagger         = '2.16'
+versions.okhttp         = '3.10.0'
+versions.retrofit       = '2.4.0'
+versions.rxBinding      = '2.1.1'
+versions.kotshi         = '1.0.2'
+versions.ktlint         = '0.24.0'
+versions.mockito        = '2.19.0'
+ext.versions            = versions
 
 ext.libs = [
         // Support Libraries
@@ -142,6 +120,10 @@ ext.libs = [
         'autodispose': "com.uber.autodispose:autodispose-android-archcomponents-kotlin:0.6.1",
         // Test
         'junit': "junit:junit:4.12",
+        'mockito'    : [
+                'core' : "org.mockito:mockito-core:${versions.mockito}",
+                'android' : "org.mockito:mockito-android:${versions.mockito}"
+        ],
         'assertj': "org.assertj:assertj-core:3.8.0",
         'dexmaker': "com.linkedin.dexmaker:dexmaker-mockito:2.2.0"
 ]

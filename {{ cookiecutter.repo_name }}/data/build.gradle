@@ -27,6 +27,11 @@ android {
     sourceSets {
 
     }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
+    }
 }
 
 dependencies {
