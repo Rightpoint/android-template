@@ -2,7 +2,7 @@ version: 2.0
 
 defaults: &defaults
   docker:
-    - image: circleci/android:api-27-alpha
+    - image: circleci/android:api-28-alpha
   working_directory: ~/{{ cookiecutter.repo_name }}
   environment:
     _JAVA_OPTIONS: "-Xmx1400m -XX:ParallelGCThreads=2 -XX:ConcGCThreads=2 -XX:ParallelGCThreads=2 -Djava.util.concurrent.ForkJoinPool.common.parallelism=2"
@@ -17,7 +17,7 @@ update_sdk: &update_sdk
     mkdir "$ANDROID_HOME/licenses" || true
     echo "d56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
     echo "84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-    sdkmanager "platform-tools" "platforms;android-27"
+    sdkmanager "platform-tools" "platforms;android-28"
 
 download_dependencies: &download_dependencies
   name: Download Dependencies

@@ -11,12 +11,12 @@ hockeyapp {
     variantToNotes = [
             developRelease: releaseNotes { getTheLastTwoGitMerges() },
             sprintRelease: releaseNotes { getTheLastTwoGitTags() },
-            betaRelease: releaseNotes { getTheLastTwoReleaseTags() }
+            productionRelease: releaseNotes { getTheLastTwoReleaseTags() }
     ]
     variantToApplicationId = [
             developRelease: propOrEmpty('HOCKEYAPP_ID_DEVELOP'),
             sprintRelease: propOrEmpty('HOCKEYAPP_ID_SPRINT'),
-            betaRelease: propOrEmpty('HOCKEYAPP_ID_BETA')
+            productionRelease: propOrEmpty('HOCKEYAPP_ID_PROD')
     ]
 }
 
