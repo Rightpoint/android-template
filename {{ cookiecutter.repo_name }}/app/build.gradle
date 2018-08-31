@@ -43,13 +43,6 @@ android {
             keyAlias '{{ cookiecutter.app_name | replace(' ', '') | lower }}Sprint'
             keyPassword propOrEmpty('KEY_PASSWORD')
         }
-
-        beta {
-            storeFile file('${project.rootDir}/keystores/{{ cookiecutter.app_name | replace(' ', '') | lower }}Beta.jks')
-            storePassword propOrEmpty('STORE_PASSWORD')
-            keyAlias '{{ cookiecutter.app_name | replace(' ', '') | lower }}Beta'
-            keyPassword propOrEmpty('KEY_PASSWORD')
-        }
         
         production {
             storeFile file('${project.rootDir}/keystores/{{ cookiecutter.app_name | replace(' ', '') | lower }}Production.jks')
@@ -72,10 +65,6 @@ android {
             applicationIdSuffix ".sprint"
             signingConfig signingConfigs.sprint
         }
-        beta {
-            dimension "track"
-            signingConfig signingConfigs.beta
-        }
         production {
             dimension "track"
             signingConfig signingConfigs.production
@@ -89,6 +78,15 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkDependencies true
+    }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
     }
 }
 
@@ -116,6 +114,7 @@ dependencies {
 
     implementation libs.rx.android
     implementation libs.rx.binding.kotlin
+    implementation libs.rx.java
     implementation libs.rx.relay
 
     implementation libs.autodispose
