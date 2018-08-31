@@ -4,7 +4,7 @@ ext.patch = 0
 ext.build = System.getenv("CIRCLE_BUILD_NUM")
 
 def buildConfig         = [:]
-buildConfig.minSdk      = 21
+buildConfig.minSdk      = 23
 buildConfig.targetSdk   = 28
 buildConfig.compileSdk  = 28
 buildConfig.buildTools  = "27.0.3"
