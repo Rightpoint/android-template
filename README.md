@@ -22,7 +22,7 @@ Inspired by [thoughtbot]/[android-template]
  - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](https://github.com/Raizlabs/android-template/blob/develop/%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/deploy.gradle).
  
 ## Contributing
-[Submit](https://github.com/Raizlabs/android-template/issues) an issue. If it is agreed the change needs to be made, [submit](https://github.com/Raizlabs/android-template/pulls) a pull request.
+Info on how to contribute to the project can be found [here](https://github.com/Raizlabs/android-template/blob/develop/contributing.md).
 
 ## Usage
 1. [Install cookiecutter:](http://cookiecutter.readthedocs.io/en/latest/installation.html)
