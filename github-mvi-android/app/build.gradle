@@ -79,6 +79,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    configurations.all {
+        resolutionStrategy.force libs.moshi
+    }
 }
 
 dependencies {

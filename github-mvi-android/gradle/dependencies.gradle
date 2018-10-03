@@ -4,10 +4,10 @@ ext.patch = 0
 ext.build = System.getenv("CIRCLE_BUILD_NUM")
 
 def buildConfig         = [:]
-buildConfig.minSdk      = 21
+buildConfig.minSdk      = 23
 buildConfig.targetSdk   = 28
 buildConfig.compileSdk  = 28
-buildConfig.buildTools  = "27.0.3"
+buildConfig.buildTools  = "28.0.3"
 buildConfig.code        = (major * 1000000) + (minor * 10000) + (patch * 100) + ((build == null
         || build.size() == 0) ? 0 : build.toInteger())
 buildConfig.name        = "$major.$minor.$patch.$build"
@@ -15,25 +15,25 @@ ext.buildConfig         = buildConfig
 
 
 def versions            = [:]
-versions.kotlin         = '1.2.60'
-versions.supportLibrary = '28.0.0-rc01'
+versions.kotlin         = '1.2.71'
+versions.supportLibrary = '28.0.0'
 versions.arch           = '1.1.1'
 versions.archRoom       = '1.1.1'
-versions.atsl           = '1.0.1'
-versions.espresso       = '3.0.1'
-versions.dagger         = '2.16'
-versions.okhttp         = '3.10.0'
+versions.atsl           = '1.0.2'
+versions.espresso       = '3.0.2'
+versions.dagger         = '2.17'
+versions.okhttp         = '3.11.0'
 versions.retrofit       = '2.4.0'
-versions.rxBinding      = '2.1.1'
-versions.kotshi         = '1.0.2'
-versions.autoDispose    = '0.6.1'
-versions.apollo         = '0.4.2'
-versions.navigation     = '1.0.0-alpha04'
-versions.workManager    = '1.0.0-alpha04'
+versions.rxBinding      = '2.2.0'
+versions.kotshi         = '1.0.5'
+versions.autoDispose    = '0.8.0'
+versions.apollo         = '0.4.1'
+versions.navigation     = '1.0.0-alpha06'
+versions.workManager    = '1.0.0-alpha09'
 versions.ktlint         = '0.24.0'
-versions.glide          = '4.7.1'
+versions.glide          = '4.8.0'
 versions.aws            = '2.6.22'
-versions.mockito        = '2.19.0'
+versions.mockito        = '2.22.0'
 ext.versions            = versions
 
 ext.libs = [
@@ -64,9 +64,9 @@ ext.libs = [
         ],
 
         'rx'         : [
-                'java'       : "io.reactivex.rxjava2:rxjava:2.1.16",
-                'kotlin'     : "io.reactivex.rxjava2:rxkotlin:2.2.0",
-                'android'    : "io.reactivex.rxjava2:rxandroid:2.0.2",
+                'java'       : "io.reactivex.rxjava2:rxjava:2.2.2",
+                'kotlin'     : "io.reactivex.rxjava2:rxkotlin:2.3.0",
+                'android'    : "io.reactivex.rxjava2:rxandroid:2.1.0",
                 'binding'    : [
                         'kotlin'      : "com.jakewharton.rxbinding2:rxbinding-kotlin:${versions.rxBinding}",
                         'appcompat'   : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:${versions.rxBinding}",
@@ -75,7 +75,7 @@ ext.libs = [
                 ],
                 'permissions': "com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar",
                 'preferences': "com.f2prateek.rx.preferences2:rx-preferences:2.0.0",
-                'relay'      : "com.jakewharton.rxrelay2:rxrelay:2.0.0"
+                'relay'      : "com.jakewharton.rxrelay2:rxrelay:2.1.0"
         ],
         'okhttp'     : [
                 'client' : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
@@ -92,7 +92,7 @@ ext.libs = [
                 'rx'     : "com.apollographql.apollo:apollo-rx2-support:${versions.apollo}",
         ],
         'facebook'   : "com.facebook.android:facebook-login:[4,5)",
-        'moshi'      : "com.squareup.moshi:moshi:1.5.0",
+        'moshi'      : "com.squareup.moshi:moshi:1.7.0",
         'kotshi'     : [
                 'api'     : "se.ansman.kotshi:api:${versions.kotshi}",
                 'compiler': "se.ansman.kotshi:compiler:${versions.kotshi}"
@@ -105,7 +105,7 @@ ext.libs = [
                         'junit'  : "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}"
                 ]
         ],
-        'timber'     : "com.jakewharton.timber:timber:4.6.1",
+        'timber'     : "com.jakewharton.timber:timber:4.7.1",
         'autodispose': [
                 'kotlin': [
                         'base': "com.uber.autodispose:autodispose-kotlin:${versions.autoDispose}",
@@ -119,7 +119,7 @@ ext.libs = [
         'ucrop'      : "com.github.yalantis:ucrop:2.2.2",
         // Test
         'junit'      : "junit:junit:4.12",
-        'assertj'    : "org.assertj:assertj-core:3.8.0",
+        'assertj'    : "org.assertj:assertj-core:3.11.1",
         'mockito'    : [
                 'core' : "org.mockito:mockito-core:${versions.mockito}",
                 'android' : "org.mockito:mockito-android:${versions.mockito}"

@@ -88,6 +88,10 @@ android {
         reportDir "$rootDir/reports/app"
         resultsDir "$rootDir/test-results/app"
     }
+
+    configurations.all {
+        resolutionStrategy.force libs.moshi
+    }
 }
 
 dependencies {
