@@ -68,3 +68,26 @@ There are a number things that you still need to take care of to get your newly 
     * You can set the following environment variables with the `export` command in the terminal
         * `ANDROID_HOME`=`/Users/{your_user}/Library/Android/sdk`
         * `JAVA_HOME`=`/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home/` _(This only needs to be set if you have multiple versions of Java on your machine.)_
+
+### Dependencies Reference
+- [Kotlin](https://kotlinlang.org/docs/reference/using-gradle.html): Kotlin is a modern statically typed programming language that will boost your productivity and increase your developer happiness.
+- [Ktlint](https://github.com/shyiko/ktlint): An anti-bikeshedding Kotlin linter with built-in formatter
+- [Rx](https://github.com/ReactiveX/RxAndroid): Makes writing reactive components in Android applications easy and hassle-free.
+- [RxBinding](https://github.com/JakeWharton/RxBinding): RxJava binding APIs for Android's UI widgets. 
+- [Dagger](https://github.com/google/dagger): Dagger is a fully static, compile-time dependency injection framework for both Java and Android.
+- [Retrofit](https://github.com/square/retrofit): Type-safe HTTP client for Android and Java.
+- [Moshi](https://github.com/square/moshi): Moshi is a modern JSON library for Android and Java. It makes it easy to parse JSON into Java objects.
+- [Kotshi](https://github.com/ansman/kotshi): An annotations processor that generates Moshi adapters from immutable Kotlin data classes.
+- [Timber](https://github.com/JakeWharton/timber): A logger with a small, extensible API which provides utility on top of Android's normal Log class. 
+- [Okhttp](https://github.com/square/okhttp): An HTTP+HTTP/2 client for Android and Java applications.
+- [arch](https://developer.android.com/topic/libraries/architecture/): Android architecture components are part of [Android Jetpack](https://developer.android.com/jetpack). They are a collection of libraries that help you design robust, testable, and maintainable apps. Start with classes for managing your UI component lifecycle and handling data persistence. We included [room](https://developer.android.com/topic/libraries/architecture/room) and [viewmodel](https://developer.android.com/topic/libraries/architecture/viewmodel) only for demonstration purposes.
+- [atsl](https://developer.android.com/training/testing/set-up-project): Dependencies needed for running Android tests.
+- [espresso](https://developer.android.com/training/testing/espresso/): Use Espresso to write concise, beautiful, and reliable Android UI tests.
+- [mockito](https://github.com/mockito/mockito): Mocking framework for unit tests in Java.
+- [android-ktx](https://github.com/android/android-ktx): A set of Kotlin extensions for Android app development. The goal of Android KTX is to make Android development with Kotlin more concise, pleasant, and idiomatic by leveraging the features of the language such as extension functions/properties, lambdas, named parameters, and parameter defaults.
+- [RxPermissions](https://github.com/tbruyelle/RxPermissions): This library allows the usage of RxJava with the new Android M permission model.
+- [RxRelay](https://github.com/JakeWharton/RxRelay): Relays are RxJava types which are both an Observable and a Consumer.
+- [AutoDispose](https://github.com/uber/AutoDispose):AutoDispose is an RxJava 2 tool for automatically binding the execution of RxJava 2 streams to a provided scope via disposal/cancellation.
+- [junit](https://github.com/junit-team/junit4): JUnit is a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks.
+- [assertj-core](https://github.com/joel-costigliola/assertj-core): AssertJ provides a rich and intuitive set of strongly-typed assertions to use for unit testing (with JUnit, TestNG or any other test framework).
+- [dexmaker](https://github.com/linkedin/dexmaker): A Java-language API for doing compile time or runtime code generation targeting the Dalvik VM.
