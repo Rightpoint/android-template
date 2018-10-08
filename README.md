@@ -13,7 +13,7 @@ Inspired by [thoughtbot]/[android-template]
 
  - Configures the company name, project name, repo name, package name, and gitignore.
  - Option to use [Room](https://developer.android.com/topic/libraries/architecture/room) or [Realm](https://realm.io/).
- - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Moshi, and Timber. View the [dependencies.gradle](https://github.com/Raizlabs/android-template/blob/develop/%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/dependencies.gradle) for a complete list.
+ - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Moshi, and Timber. View the [dependencies reference](https://github.com/Raizlabs/android-template/blob/develop/README.md#dependencies-reference) for a complete list.
  - Modules for separation of concerns in accordance with Clean Architecture.
  - Proguard configuration.
  - CircleCi configuration.
