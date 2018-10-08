@@ -69,7 +69,7 @@ There are a number things that you still need to take care of to get your newly 
         * `ANDROID_HOME`=`/Users/{your_user}/Library/Android/sdk`
         * `JAVA_HOME`=`/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home/` _(This only needs to be set if you have multiple versions of Java on your machine.)_
 
-### Dependencies Reference
+## Dependencies Reference
 - [Kotlin](https://kotlinlang.org/docs/reference/using-gradle.html): Kotlin is a modern statically typed programming language that will boost your productivity and increase your developer happiness.
 - [Ktlint](https://github.com/shyiko/ktlint): An anti-bikeshedding Kotlin linter with built-in formatter
 - [Rx](https://github.com/ReactiveX/RxAndroid): Makes writing reactive components in Android applications easy and hassle-free.
