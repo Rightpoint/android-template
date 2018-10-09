@@ -12,5 +12,5 @@ Note: Code completion and other IDE sugar will not be functional because this is
 Note: Be sure to use the cookiecutter namespace e.g. `{{ cookiecutter.package_name }}` to make generated files compile properly. 
 
 ### Notable Files
-* [Pre Project Generation Logic](https://github.com/Raizlabs/android-template/blob/develop/hooks/pre_gen_project.py)
-* [Post Project Generation Logic](https://github.com/Raizlabs/android-template/blob/develop/hooks/post_gen_project.sh)
+* [Pre Project Generation Logic](./hooks/pre_gen_project.py)
+* [Post Project Generation Logic](./hooks/post_gen_project.sh)
