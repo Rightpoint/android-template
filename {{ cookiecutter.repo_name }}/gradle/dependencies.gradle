@@ -63,7 +63,7 @@ ext.libs = [
                         'rules': "androidx.test:rules:${versions.atsl}"
                 ],
                 'x': [
-                        'coreKtx': 'androidx.core:core-ktx:0.3'
+                        'coreKtx': 'androidx.core:core-ktx:1.0.0'
                 ]
         ],
 
