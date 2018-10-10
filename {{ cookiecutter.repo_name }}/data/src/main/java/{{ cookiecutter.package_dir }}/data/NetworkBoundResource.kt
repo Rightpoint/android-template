@@ -1,6 +1,6 @@
 package {{ cookiecutter.package_name }}.data
 
-import android.support.annotation.WorkerThread
+import androidx.annotation.WorkerThread
 import {{ cookiecutter.package_name }}.domain.executors.AppExecutors
 import io.reactivex.Flowable
 import io.reactivex.Single
