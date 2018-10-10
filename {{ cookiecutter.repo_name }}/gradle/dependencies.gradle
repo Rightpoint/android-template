@@ -29,7 +29,7 @@ versions.mockito        = '2.22.0'
 ext.versions            = versions
 
 ext.libs = [
-        // Support Libraries
+        // AndroidX Libraries
         'android': [
                 'arch':[
                         'db': "androidx.sqlite:sqlite:${versions.archRoom}",
@@ -50,10 +50,8 @@ ext.libs = [
                         'coreUtils': "androidx.legacy:legacy-support-core-utils:${versions.supportLibrary}",
                         'design': "com.google.android.material:material:${versions.supportLibrary}",
                         'fragment': "androidx.fragment:fragment:1.0.0:${versions.supportLibrary}",
-                        'recyclerView': "androidx.recyclerview:recyclerview:${versions.supportLibrary}"
-                ],
-                'misc': [
-                     'constraintLayout': "androidx.constraintlayout:constraintlayout:1.1.3"
+                        'recyclerView': "androidx.recyclerview:recyclerview:${versions.supportLibrary}",
+                        'constraintLayout': "androidx.constraintlayout:constraintlayout:1.1.3"
                 ],
                 // Android Test
                 'test': [
