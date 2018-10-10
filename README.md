@@ -59,11 +59,9 @@ There are a number things that you still need to take care of to get your newly 
     * Any keys that we don't want living in the repo
 
 ### How to deal with post-generation build woes
-1. If you decided to launch Android Studio simply press the `Gradle Sync` button to generate a `local.properties` file.
-    ![Android Studio Toolbar](documentation/studio_toolbar.png)
+1. If you decided to launch Android Studio simply click `File > Sync Project with Gradle Files` to generate a `local.properties` file.
+![Android Studio File Menu](documentation/studio_file_menu.png)
     
-    Android Studio 3.1 and higher the option was moved into the File menu
-    ![Android Studio File Menu](documentation/studio_file_menu.png)
 2. If you decided not to launch Android Studio you need to make sure various environment variables are set before you can run any Gradle scripts:
     * You can set the following environment variables with the `export` command in the terminal
         * `ANDROID_HOME`=`/Users/{your_user}/Library/Android/sdk`
