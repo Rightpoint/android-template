@@ -37,9 +37,9 @@ ext.libs = [
                                 'runtime': "androidx.room:room-runtime:${versions.archRoom}",
                                 'compiler': "androidx.room:room-compiler:${versions.archRoom}",
                                 'test': "androidx.room:room-testing:${versions.archRoom}",
-                                'adapterRxJava2': "aandroidx.room:room-rxjava2:${versions.archRoom}"
+                                'adapterRxJava2': "androidx.room:room-rxjava2:${versions.archRoom}"
                         ],
-                        'viewmodel': "aandroidx.lifecycle:lifecycle-viewmodel:${versions.arch}"
+                        'viewmodel': "androidx.lifecycle:lifecycle-viewmodel:${versions.arch}"
                 ],
                 'support': [
                         'annotations': "androidx.annotation:annotation:${versions.supportLibrary}",
