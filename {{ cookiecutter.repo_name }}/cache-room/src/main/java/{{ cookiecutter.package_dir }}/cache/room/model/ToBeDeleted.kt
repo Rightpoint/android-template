@@ -1,7 +1,7 @@
 package {{ cookiecutter.package_name }}.cache.room.model
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /**
  * This class is acting as a placeholder in order to compile the template project with the Room

@@ -1,7 +1,7 @@
 package {{ cookiecutter.package_name }}.cache.room
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import {{ cookiecutter.package_name }}.cache.room.model.ToBeDeleted
 
 @Database(entities = [
