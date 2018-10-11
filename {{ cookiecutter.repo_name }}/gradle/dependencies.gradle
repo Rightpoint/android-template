@@ -49,7 +49,7 @@ ext.libs = [
                         'coreUi': "androidx.legacy:legacy-support-core-ui:${versions.supportLibrary}",
                         'coreUtils': "androidx.legacy:legacy-support-core-utils:${versions.supportLibrary}",
                         'design': "com.google.android.material:material:${versions.supportLibrary}",
-                        'fragment': "androidx.fragment:fragment:1.0.0:${versions.supportLibrary}",
+                        'fragment': "androidx.fragment:fragment:${versions.supportLibrary}",
                         'recyclerView': "androidx.recyclerview:recyclerview:${versions.supportLibrary}",
                         'constraintLayout': "androidx.constraintlayout:constraintlayout:1.1.3"
                 ],
