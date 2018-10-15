@@ -62,7 +62,7 @@ dependencies {
     implementation libs.dagger.runtime
     kapt libs.dagger.compiler
 
-    implementation libs.android.androidX.annotations
+    implementation libs.android.androidx.annotations
     implementation libs.kotlin.stdlib
     implementation libs.rx.java
 

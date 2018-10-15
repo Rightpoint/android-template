@@ -41,7 +41,7 @@ dependencies {
     androidTestImplementation libs.android.test.runner
 
     // Android
-    implementation libs.android.androidX.annotations
+    implementation libs.android.androidx.annotations
 
     // Kotlin
     implementation libs.kotlin.stdlib

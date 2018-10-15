@@ -45,7 +45,7 @@ dependencies {
     api project(':remote')
 
     // Android
-    implementation libs.android.androidX.annotations
+    implementation libs.android.androidx.annotations
 
     // Dagger
     implementation libs.dagger.runtime
