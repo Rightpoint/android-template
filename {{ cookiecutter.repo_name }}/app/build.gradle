@@ -106,10 +106,10 @@ dependencies {
 
     implementation libs.kotlin.stdlib
     implementation libs.android.x.coreKtx
-    implementation libs.android.support.annotations
-    implementation libs.android.support.design
-    implementation libs.android.support.coreUtils
-    implementation libs.android.support.constraintLayout
+    implementation libs.android.androidX.annotations
+    implementation libs.android.androidX.design
+    implementation libs.android.androidX.coreUtils
+    implementation libs.android.androidX.constraintLayout
 
     implementation libs.dagger.runtime
     kapt libs.dagger.compiler
