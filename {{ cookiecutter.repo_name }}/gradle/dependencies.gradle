@@ -14,7 +14,7 @@ ext.buildConfig         = buildConfig
 
 def versions            = [:]
 versions.kotlin         = '1.2.71'
-versions.supportLibrary = '1.0.0'
+versions.androidX       = '1.0.0'
 versions.arch           = '1.1.1'
 versions.archRoom       = '2.0.0'
 versions.atsl           = '1.1.0-alpha3'
@@ -29,7 +29,7 @@ versions.mockito        = '2.22.0'
 ext.versions            = versions
 
 ext.libs = [
-        // AndroidX Libraries
+        // Google's Android Libraries
         'android': [
                 'arch':[
                         'db': "androidx.sqlite:sqlite:${versions.archRoom}",
@@ -41,19 +41,18 @@ ext.libs = [
                         ],
                         'viewmodel': "androidx.lifecycle:lifecycle-viewmodel:${versions.arch}"
                 ],
-                'support': [
-                        'annotations': "androidx.annotation:annotation:${versions.supportLibrary}",
-                        'appcompat': "androidx.appcompat:appcompat:${versions.supportLibrary}",
-                        'cardview': "androidx.cardview:cardview:${versions.supportLibrary}",
-                        'compat': "androidx.core:core:${versions.supportLibrary}",
-                        'coreUi': "androidx.legacy:legacy-support-core-ui:${versions.supportLibrary}",
-                        'coreUtils': "androidx.legacy:legacy-support-core-utils:${versions.supportLibrary}",
-                        'design': "com.google.android.material:material:${versions.supportLibrary}",
-                        'fragment': "androidx.fragment:fragment:${versions.supportLibrary}",
-                        'recyclerView': "androidx.recyclerview:recyclerview:${versions.supportLibrary}",
+                'androidX': [
+                        'annotations': "androidx.annotation:annotation:${versions.androidx}",
+                        'appcompat': "androidx.appcompat:appcompat:${versions.androidx}",
+                        'cardview': "androidx.cardview:cardview:${versions.androidx}",
+                        'compat': "androidx.core:core:${versions.androidx}",
+                        'coreUi': "androidx.legacy:legacy-support-core-ui:${versions.androidx}",
+                        'coreUtils': "androidx.legacy:legacy-support-core-utils:${versions.androidx}",
+                        'design': "com.google.android.material:material:${versions.androidx}",
+                        'fragment': "androidx.fragment:fragment:${versions.androidx}",
+                        'recyclerView': "androidx.recyclerview:recyclerview:${versions.androidx}",
                         'constraintLayout': "androidx.constraintlayout:constraintlayout:1.1.3"
                 ],
-                // Android Test
                 'test': [
                         'espresso': [
                                 'core': "androidx.test.espresso:espresso-core:${versions.espresso}",
