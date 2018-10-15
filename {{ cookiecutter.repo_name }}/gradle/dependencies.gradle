@@ -14,7 +14,7 @@ ext.buildConfig         = buildConfig
 
 def versions            = [:]
 versions.kotlin         = '1.2.71'
-versions.androidX       = '1.0.0'
+versions.androidx       = '1.0.0'
 versions.arch           = '1.1.1'
 versions.archRoom       = '2.0.0'
 versions.atsl           = '1.1.0-alpha3'
@@ -41,7 +41,7 @@ ext.libs = [
                         ],
                         'viewmodel': "androidx.lifecycle:lifecycle-viewmodel:${versions.arch}"
                 ],
-                'androidX': [
+                'androidx': [
                         'annotations': "androidx.annotation:annotation:${versions.androidx}",
                         'appcompat': "androidx.appcompat:appcompat:${versions.androidx}",
                         'cardview': "androidx.cardview:cardview:${versions.androidx}",
