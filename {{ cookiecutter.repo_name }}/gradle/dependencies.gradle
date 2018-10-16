@@ -41,7 +41,7 @@ ext.libs = [
                         ],
                         'viewmodel': "androidx.lifecycle:lifecycle-viewmodel:${versions.arch}"
                 ],
-                'androidx': [
+                'x': [
                         'annotations': "androidx.annotation:annotation:${versions.androidx}",
                         'appcompat': "androidx.appcompat:appcompat:${versions.androidx}",
                         'cardview': "androidx.cardview:cardview:${versions.androidx}",
@@ -51,6 +51,7 @@ ext.libs = [
                         'design': "com.google.android.material:material:${versions.androidx}",
                         'fragment': "androidx.fragment:fragment:${versions.androidx}",
                         'recyclerView': "androidx.recyclerview:recyclerview:${versions.androidx}",
+                        'coreKtx': "androidx.core:core-ktx:${versions.androidx}",
                         'constraintLayout': "androidx.constraintlayout:constraintlayout:1.1.3"
                 ],
                 'test': [
@@ -60,9 +61,6 @@ ext.libs = [
                         ],
                         'runner': "androidx.test:runner:${versions.atsl}",
                         'rules': "androidx.test:rules:${versions.atsl}"
-                ],
-                'x': [
-                        'coreKtx': 'androidx.core:core-ktx:1.0.0'
                 ]
         ],
 
