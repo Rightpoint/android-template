@@ -46,7 +46,7 @@ dependencies {
     implementation libs.dagger.runtime
     kapt libs.dagger.compiler
 
-    implementation libs.android.support.annotations
+    implementation libs.android.x.annotations
     implementation libs.kotlin.stdlib
 
     testImplementation libs.junit
