@@ -81,10 +81,6 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
         classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:3.3.0"
-
-        {% if cookiecutter.caching_library == "Realm" %}
-        classpath "io.realm:realm-gradle-plugin:5.0.0"
-        {% endif %}
     }
     
     configurations.all {

@@ -36,11 +36,7 @@ android {
 
 dependencies {
     implementation project(":domain")
-    {% if cookiecutter.caching_library == "Realm" %}
-    api project(':cache-realm')
-    {% elif cookiecutter.caching_library == "Room" %}
-    api project(':cache-room')
-    {% endif %}
+    api project(':cache')
 
     api project(':remote')
 

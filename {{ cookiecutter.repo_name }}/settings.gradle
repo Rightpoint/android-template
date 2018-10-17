@@ -3,9 +3,4 @@ include ':data'
 include ':device'
 include ':domain'
 include ':remote'
-
-{% if cookiecutter.caching_library == "Realm" %}
-include ':cache-realm'
-{% elif cookiecutter.caching_library == "Room" %}
-include ':cache-room'
-{% endif %}
+include ':cache'
