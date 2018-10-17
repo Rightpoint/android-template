@@ -1,10 +1,6 @@
 package {{ cookiecutter.package_name }}.data.injection;
 
-{% if cookiecutter.caching_library == "Realm" %}
-import {{ cookiecutter.package_name }}.cache.realm.DatabaseModule;
-{% elif cookiecutter.caching_library == "Room" %}
 import {{ cookiecutter.package_name }}.cache.room.DatabaseModule;
-{% endif %}
 import {{ cookiecutter.package_name }}.domain.executors.AppExecutors;
 import {{ cookiecutter.package_name }}.remote.NetworkModule;
 

@@ -12,8 +12,7 @@ Inspired by [thoughtbot]/[android-template]
 ## What's in the template?
 
  - Configures the company name, project name, repo name, package name, and gitignore.
- - Option to use [Room](https://developer.android.com/topic/libraries/architecture/room) or [Realm](https://realm.io/).
- - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Moshi, and Timber. View the [dependencies reference](https://github.com/Raizlabs/android-template/blob/develop/README.md#dependencies-reference) for a complete list.
+ - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Room, Moshi, and Timber. View the [dependencies reference](https://github.com/Raizlabs/android-template/blob/develop/README.md#dependencies-reference) for a complete list.
  - Modules for separation of concerns in accordance with Clean Architecture.
  - Proguard configuration.
  - CircleCi configuration.
