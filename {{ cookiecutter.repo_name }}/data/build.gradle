@@ -36,7 +36,7 @@ android {
 
 dependencies {
     implementation project(":domain")
-    api project(':cache-room')
+    api project(':cache')
 
     api project(':remote')
 
