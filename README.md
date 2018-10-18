@@ -59,6 +59,7 @@ There are a number things that you still need to take care of to get your newly 
 
 ### How to deal with post-generation build woes
 1. If you decided to launch Android Studio simply click `File > Sync Project with Gradle Files` to generate a `local.properties` file.
+
 ![Android Studio File Menu](documentation/studio_file_menu.png)
     
 2. If you decided not to launch Android Studio you need to make sure various environment variables are set before you can run any Gradle scripts:
