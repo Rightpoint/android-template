@@ -5,6 +5,3 @@
 
 [develop-hockey]: https://rink.hockeyapp.net/apps/
 [sprint-hockey]: https://rink.hockeyapp.net/apps/
-
-## Contributing
-* Install the pre-defined Git hooks: `./gradlew configureGitHooks`

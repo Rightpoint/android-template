@@ -3,7 +3,6 @@ import com.android.build.gradle.FeaturePlugin
 import com.android.build.gradle.LibraryPlugin
 
 apply from: "${project.rootDir}/gradle/dependencies.gradle"
-apply from: "${project.rootDir}/gradle/git.gradle"
 
 allprojects {
     repositories {
