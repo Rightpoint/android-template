@@ -17,7 +17,6 @@ Inspired by [thoughtbot]/[android-template]
  - Proguard configuration.
  - CircleCi configuration.
  - Signing configs and products flavors for `develop`, `sprint`, and `beta` tracks.
- - Commit hook to format code.
  - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/deploy.gradle).
  
 ## Contributing
@@ -36,9 +35,8 @@ We would love your help! View the [contributing guide](./contributing.md) to get
 
 ## Post Generation
 There are a number things that you still need to take care of to get your newly generated project up and running:
-1. Enter `./gradlew configureGitHooks` into the terminal to take advantage of the pre-defined git hooks.
-2. Run Gradle Sync in Android Studio to make sure you can build the project.
-3. Generate 3 keystores for your project:
+1. Run Gradle Sync in Android Studio to make sure you can build the project.
+2. Generate 3 keystores for your project:
     * Generate a keystore for the develop, sprint and beta tracks
     * Make sure to add the actual keystore files to the repository
     * **DO NOT SAVE THE KEYSTORE CREDENTIALS TO THE REPO, USE 1PASSWORD!**
@@ -46,8 +44,8 @@ There are a number things that you still need to take care of to get your newly 
     * Try to follow the convention of app name and build flavor for the alias:
         * For example: `doormanDevelop`, `doormanSprint` and `doormanBeta`
     * Update the `app/build.gradle` file to reflect these keystore values
-4. Set your project up on CircleCI
-5. Add the following environment variables to CircleCI **(A note on the following environment variables: they are prefixed with `ORG_GRADLE_PROJECT_` so they can be accessed within our Gradle scripts as project properties. This makes it easier for us to fake them outside of a CI environment.)**
+3. Set your project up on CircleCI
+4. Add the following environment variables to CircleCI **(A note on the following environment variables: they are prefixed with `ORG_GRADLE_PROJECT_` so they can be accessed within our Gradle scripts as project properties. This makes it easier for us to fake them outside of a CI environment.)**
     * `ORG_GRADLE_PROJECT_HOCKEYAPP_TOKEN` set to Raizlabs' HockeyApp token
     * The IDs for each of the tracks being deployed to HockeyApp:
         * `ORG_GRADLE_PROJECT_HOCKEYAPP_ID_DEVELOP` set to the develop track's HockeyApp ID
