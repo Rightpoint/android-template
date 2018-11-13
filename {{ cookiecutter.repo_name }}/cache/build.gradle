@@ -66,5 +66,6 @@ dependencies {
     implementation libs.kotlin.stdlib
     implementation libs.rx.java
 
-    testImplementation libs.junit
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }

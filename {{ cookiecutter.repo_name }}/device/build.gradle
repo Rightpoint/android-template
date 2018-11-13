@@ -46,5 +46,6 @@ dependencies {
     // Kotlin
     implementation libs.kotlin.stdlib
 
-    testImplementation libs.junit
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }
