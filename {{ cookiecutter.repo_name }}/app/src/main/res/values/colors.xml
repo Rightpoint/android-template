@@ -3,30 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
     <color name="black">#000000</color>
-    <color name="black222">#DE000000</color>
-    <color name="black221">#DD000000</color>
-    <color name="black138">#8A000000</color>
-    <color name="black137">#89000000</color>
-    <color name="black96">#60000000</color>
-    <color name="black64">#40000000</color>
-    <color name="black31">#1F000000</color>
-
     <color name="white">#ffffff</color>
-    <color name="white100">#00FFFFFF</color>
-    <color name="white80">#ccFFFFFF</color>
-    <color name="white70">#B3FFFFFF</color>
-    <color name="white50">#80FFFFFF</color>
-    <color name="white12">#1FFFFFFF</color>
-
-    <!-- Standard dark text on light background -->
-    <color name="text_dark_primary">@color/black221</color>
-    <color name="text_dark_secondary">@color/black137</color>
-    <color name="text_dark_tertiary">@color/black96</color>
-
-    <!-- Standard white text on dark background -->
-    <color name="text_light_primary">@android:color/white</color>
-    <color name="text_light_secondary">@color/white70</color>
-    <color name="text_light_tertiary">@color/white50</color>
 </resources>

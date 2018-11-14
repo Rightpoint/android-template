@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--
+    To build consistent typography styles throughout the app use the type scale defined in the
+    Material Design spec.
+    See: https://material.io/design/typography/the-type-system.html#type-scale.
+
+    For reference, these are the styles when reference in XML:
+    * ?attr/textAppearanceHeadline1
+    * ?attr/textAppearanceHeadline2
+    * ?attr/textAppearanceHeadline3
+    * ?attr/textAppearanceHeadline4
+    * ?attr/textAppearanceHeadline5
+    * ?attr/textAppearanceHeadline6
+    * ?attr/textAppearanceSubtitle1
+    * ?attr/textAppearanceSubtitle2
+    * ?attr/textAppearanceBody1
+    * ?attr/textAppearanceBody2
+    * ?attr/textAppearanceButton
+    * ?attr/textAppearanceCaption
+    * ?attr/textAppearanceOverline
+
+    These default styles can be overridden in the app theme to fit the design of the application.
+    Try to make sure the application designers adhere to this type scale in their comps.
+
+    All text appearance styles should be used through android:textAppearance attribute.
+
+    To define additional text styles, the naming and hierarchy format should be the following:
+
+        TextAppearance.[Color].[Size].[*FamilyItem].[*Style].[*Options]
+
+        * Indicates optional
+
+        - Color:        Text Color (e.g. DarkPrimary, DarkTertiary)
+        - Size:         Text Size
+        - FamilyItem:   Font FamilyItem (e.g. Condensed, Medium)
+        - Style:        Text Style (e.g. Bold, Italic)
+        - Options:      Any other styles (e.g. AllCaps)
+-->
+</resources>
