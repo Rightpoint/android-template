@@ -63,4 +63,7 @@ dependencies {
 
     // Timber
     implementation libs.timber
+
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }

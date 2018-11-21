@@ -54,5 +54,6 @@ dependencies {
     implementation libs.rx.java
     implementation libs.rx.android
 
-    testImplementation libs.junit
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }

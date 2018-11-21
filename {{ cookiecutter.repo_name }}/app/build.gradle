@@ -125,5 +125,6 @@ dependencies {
 
     implementation libs.timber
 
-    testImplementation libs.junit
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }
