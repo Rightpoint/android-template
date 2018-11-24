@@ -108,7 +108,6 @@ dependencies {
     implementation libs.android.x.coreKtx
     implementation libs.android.x.annotations
     implementation libs.android.x.design
-    implementation libs.android.x.coreUtils
     implementation libs.android.x.constraintLayout
 
     implementation libs.dagger.runtime
@@ -117,7 +116,6 @@ dependencies {
     kapt libs.dagger.android.processor
 
     implementation libs.rx.android
-    implementation libs.rx.binding.kotlin
     implementation libs.rx.java
     implementation libs.rx.relay
 

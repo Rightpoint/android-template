@@ -38,25 +38,18 @@ android {
 dependencies {
     // Testing
     androidTestImplementation libs.android.test.espresso.core
-    androidTestImplementation (libs.android.test.espresso.contrib) {
-        exclude module: 'design'
-        exclude module: 'support-annotations'
-        exclude module: 'support-v4'
-        exclude module: 'support-v13'
-        exclude module: 'recyclerview-v7'
-        exclude module: 'appcompat-v7'
-    }
+    androidTestImplementation libs.android.test.espresso.contrib
     androidTestImplementation libs.android.test.rules
     androidTestImplementation libs.android.test.runner
-    androidTestImplementation libs.android.arch.room.test
+    androidTestImplementation libs.android.x.room.test
 
     // Support Database
-    implementation libs.android.arch.db
+    implementation libs.android.x.sqlite
 
     // Room
-    api libs.android.arch.room.runtime
-    kapt libs.android.arch.room.compiler
-    api libs.android.arch.room.adapterRxJava2
+    api libs.android.x.room.runtime
+    kapt libs.android.x.room.compiler
+    api libs.android.x.room.adapterRxJava2
 
     // Dagger
     implementation libs.dagger.runtime
