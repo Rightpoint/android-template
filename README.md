@@ -44,8 +44,9 @@ There are a number things that you still need to take care of to get your newly 
     * Try to follow the convention of app name and build flavor for the alias:
         * For example: `doormanDevelop`, `doormanSprint` and `doormanBeta`
     * Update the `app/build.gradle` file to reflect these keystore values
-3. Set your project up on CircleCI
-4. Add the following environment variables to CircleCI **(A note on the following environment variables: they are prefixed with `ORG_GRADLE_PROJECT_` so they can be accessed within our Gradle scripts as project properties. This makes it easier for us to fake them outside of a CI environment.)**
+3. Create `develop` and `sprint` tracks on Hockey under the `Raizlabs` organization or else the Raizlabs Hockey API token will not work and a `404` will be thrown when attempting to deploy to Hockey. The Raizlabs Hockey API token is in the Raizlabs vault in 1Password.
+4. Set your project up on CircleCI
+5. Add the following environment variables to CircleCI **(A note on the following environment variables: they are prefixed with `ORG_GRADLE_PROJECT_` so they can be accessed within our Gradle scripts as project properties. This makes it easier for us to fake them outside of a CI environment.)**
     * `ORG_GRADLE_PROJECT_HOCKEYAPP_TOKEN` set to Raizlabs' HockeyApp token
     * The IDs for each of the tracks being deployed to HockeyApp:
         * `ORG_GRADLE_PROJECT_HOCKEYAPP_ID_DEVELOP` set to the develop track's HockeyApp ID
