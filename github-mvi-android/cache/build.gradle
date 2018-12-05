@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+
+    }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
+    }
+}
+
+dependencies {
+    // Testing
+    androidTestImplementation libs.android.test.espresso.core
+    androidTestImplementation libs.android.test.espresso.contrib
+    androidTestImplementation libs.android.test.rules
+    androidTestImplementation libs.android.test.runner
+    androidTestImplementation libs.android.x.room.test
+
+    // Support Database
+    implementation libs.android.x.sqlite
+
+    // Room
+    api libs.android.x.room.runtime
+    kapt libs.android.x.room.compiler
+    api libs.android.x.room.adapterRxJava2
+
+    // Dagger
+    implementation libs.dagger.runtime
+    kapt libs.dagger.compiler
+
+    implementation libs.android.x.annotations
+    implementation libs.kotlin.stdlib
+    implementation libs.rx.java
+
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
+}

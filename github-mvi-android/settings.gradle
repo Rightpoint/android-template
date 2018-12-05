@@ -1,8 +1,6 @@
-include ':app'
+include ':app', ':common-android', ':common'
 include ':data'
 include ':device'
 include ':domain'
 include ':remote'
-
-
-include ':cache-room'
+include ':cache'

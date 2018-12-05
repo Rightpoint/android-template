@@ -27,18 +27,21 @@ android {
     sourceSets {
 
     }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
+    }
 }
 
 dependencies {
     implementation project(":domain")
-    
-    api project(':cache-room')
-    
+    api project(':cache')
 
     api project(':remote')
 
     // Android
-    implementation libs.android.support.annotations
+    implementation libs.android.x.annotations
 
     // Dagger
     implementation libs.dagger.runtime
@@ -51,5 +54,8 @@ dependencies {
     implementation libs.rx.java
     implementation libs.rx.android
 
-    testImplementation libs.junit
+    implementation libs.threeTen.androidBackport
+
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }

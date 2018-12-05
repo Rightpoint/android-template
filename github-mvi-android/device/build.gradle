@@ -27,6 +27,11 @@ android {
     sourceSets {
 
     }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
+    }
 }
 
 dependencies {
@@ -36,10 +41,11 @@ dependencies {
     androidTestImplementation libs.android.test.runner
 
     // Android
-    implementation libs.android.support.annotations
+    implementation libs.android.x.annotations
 
     // Kotlin
     implementation libs.kotlin.stdlib
 
-    testImplementation libs.junit
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }

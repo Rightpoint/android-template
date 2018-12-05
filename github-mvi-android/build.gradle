@@ -3,12 +3,30 @@ import com.android.build.gradle.FeaturePlugin
 import com.android.build.gradle.LibraryPlugin
 
 apply from: "${project.rootDir}/gradle/dependencies.gradle"
-apply from: "${project.rootDir}/gradle/git.gradle"
 
 allprojects {
     repositories {
         google()
         jcenter()
+    }
+    
+    // Show all compile time errors
+    // See: https://movieos.org/2017/android-room-data-binding-compile-time-errors/
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xmaxerrs" << "4000"
+            options.compilerArgs << "-Xmaxwarns" << "4000"
+        }
+    }
+
+    // Improve the build performance of Dagger by
+    // 1. Not formatting the generated source code
+    // 2. Turning on incremental compilation
+    afterEvaluate {
+        extensions.findByName("kapt")?.arguments {
+            arg("dagger.formatGeneratedSource", "disabled")
+            arg("dagger.gradle.incremental", "enabled")
+        }
     }
 }
 
@@ -36,6 +54,7 @@ subprojects { subProject ->
 
     subProject.apply plugin: "org.jlleitschuh.gradle.ktlint"
     subProject.ktlint {
+        version = versions.ktlint
         android = true
         outputToConsole = true
         reporters = ["CHECKSTYLE", "JSON"]
@@ -45,11 +64,6 @@ subprojects { subProject ->
     configurations.all {
         resolutionStrategy {
             eachDependency { details ->
-                // Force all of the primary support libraries to use the same version
-                if (details.requested.group == 'com.android.support') {
-                    details.useVersion versions.supportLibrary
-                }
-
                 // Force all of the Kotlin libraries to use the same version
                 if (details.requested.group == 'org.jetbrains.kotlin') {
                     details.useVersion versions.kotlin
@@ -73,22 +87,15 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-alpha06'
+        classpath 'com.android.tools.build:gradle:3.3.0-beta04'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
-        classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:3.3.0"
-
-        
+        classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:5.1.0"
     }
     
     configurations.all {
         resolutionStrategy {
             eachDependency { details ->
-                // Force all of the primary support libraries to use the same version
-                if (details.requested.group == 'com.android.support') {
-                    details.useVersion versions.supportLibrary
-                }
-
                 // Force all of the Kotlin libraries to use the same version
                 if (details.requested.group == 'org.jetbrains.kotlin') {
                     details.useVersion versions.kotlin

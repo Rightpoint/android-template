@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion buildConfig.buildTools
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+
+    }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
+    }
+}
+
+dependencies {
+    // Android
+    implementation libs.android.x.annotations
+
+    // Kotlin
+    implementation libs.kotlin.stdlib
+
+    // RecyclerView
+    implementation libs.android.x.recyclerView
+
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
+
+    androidTestImplementation libs.android.test.espresso.core
+    androidTestImplementation libs.android.test.espresso.contrib
+    androidTestImplementation libs.android.test.rules
+    androidTestImplementation libs.android.test.runner
+}

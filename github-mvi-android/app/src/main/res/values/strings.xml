@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">GithubExample</string>
-    <string name="retry">Retry</string>
+    <string name="app_name">Github MVI</string>
+    <string name="latest_commit_title">Latest Commit</string>
 </resources>
