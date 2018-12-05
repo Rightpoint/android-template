@@ -58,6 +58,7 @@ subprojects { subProject ->
         android = true
         outputToConsole = true
         reporters = ["CHECKSTYLE", "JSON"]
+        ignoreFailures = isCiBuild
         verbose = true
     }
 
