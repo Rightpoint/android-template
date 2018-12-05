@@ -10,13 +10,13 @@ android {
     buildToolsVersion buildConfig.buildTools
 
     defaultConfig {
-        applicationId "com.rightpoint.github.mvi"
-        testApplicationId "com.rightpoint.github.mvi.test"
+        applicationId "com.rightpoint.mvi.example"
+        testApplicationId "com.rightpoint.mvi.example.test"
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
         versionCode buildConfig.code
         versionName buildConfig.name
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -31,23 +31,23 @@ android {
 
     signingConfigs {
         develop {
-            storeFile file("${project.rootDir}/keystores/githubexampleDevelop.jks")
+            storeFile file("${project.rootDir}/keystores/githubmviDevelop.jks")
             storePassword propOrEmpty('STORE_PASSWORD')
-            keyAlias 'githubexampleDevelop'
+            keyAlias 'githubmviDevelop'
             keyPassword propOrEmpty('KEY_PASSWORD')
         }
 
         sprint {
-            storeFile file("${project.rootDir}/keystores/githubexampleSprint.jks")
+            storeFile file("${project.rootDir}/keystores/githubmviSprint.jks")
             storePassword propOrEmpty('STORE_PASSWORD')
-            keyAlias 'githubexampleSprint'
+            keyAlias 'githubmviSprint'
             keyPassword propOrEmpty('KEY_PASSWORD')
         }
-
-        beta {
-            storeFile file('${project.rootDir}/keystores/githubexampleBeta.jks')
+        
+        production {
+            storeFile file('${project.rootDir}/keystores/githubmviProduction.jks')
             storePassword propOrEmpty('STORE_PASSWORD')
-            keyAlias 'githubexampleBeta'
+            keyAlias 'githubmviProduction'
             keyPassword propOrEmpty('KEY_PASSWORD')
         }
     }
@@ -65,9 +65,9 @@ android {
             applicationIdSuffix ".sprint"
             signingConfig signingConfigs.sprint
         }
-        beta {
+        production {
             dimension "track"
-            signingConfig signingConfigs.beta
+            signingConfig signingConfigs.production
         }
     }
 
@@ -80,9 +80,22 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    lintOptions {
+        checkDependencies true
+    }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
+    }
+
     configurations.all {
         resolutionStrategy.force libs.moshi
     }
+}
+
+androidExtensions {
+    experimental = true
 }
 
 dependencies {
@@ -91,36 +104,39 @@ dependencies {
     androidTestImplementation libs.android.test.rules
     androidTestImplementation libs.android.test.runner
 
-    implementation project(':domain')
+    implementation project(':common')
+    implementation project(':common-android')
     implementation project(':data')
     implementation project(':device')
+    implementation project(':domain')
 
     implementation libs.kotlin.stdlib
-    implementation libs.android.arch.lifecycle.extensions
-    implementation libs.android.x.core.ktx
-    implementation libs.android.support.annotations
-    implementation libs.android.support.design
-    implementation libs.android.support.coreUtils
-    implementation libs.android.support.constraintLayout
-
-    implementation libs.glide.runtime
-    kapt libs.glide.compiler
+    implementation libs.android.x.coreKtx
+    implementation libs.android.x.annotations
+    implementation libs.android.x.design
+    implementation libs.android.x.constraintLayout
+    implementation libs.android.x.lifecycleExtensions
+    implementation libs.android.x.viewmodel
+    implementation libs.android.x.browser
 
     implementation libs.dagger.runtime
     kapt libs.dagger.compiler
     implementation libs.dagger.android.support
     kapt libs.dagger.android.processor
 
+    implementation libs.glide.runtime
+    kapt libs.glide.compiler
+
     implementation libs.rx.android
-    implementation libs.rx.binding.kotlin
     implementation libs.rx.java
-    implementation libs.rx.kotlin
     implementation libs.rx.relay
 
     implementation libs.autodispose.kotlin.base
     implementation libs.autodispose.kotlin.arch
 
     implementation libs.timber
+    implementation libs.threeTen.androidBackport
 
-    testImplementation libs.junit
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }

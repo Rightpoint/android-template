@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,160 +8,50 @@
 
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:importantForAccessibility="no"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/avatar_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/avatarGuideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/stats_guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
         tools:background="@color/colorAccent"/>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/avatar_guideline"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/avatarGuideline"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="72dp"/>
+        app:layout_constraintGuide_begin="@dimen/default_keyline"/>
 
     <TextView
-        android:id="@+id/repo_name"
+        android:id="@+id/repoName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:ellipsize="end"
+        android:layout_marginEnd="@dimen/default_margin"
         android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/avatar_guideline"
+        android:ellipsize="end"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintStart_toEndOf="@+id/avatarGuideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/avatar"
-        app:layout_constraintBottom_toTopOf="@+id/repo_description"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/repoDescription"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="android-template"/>
 
     <TextView
-        android:id="@+id/repo_description"
+        android:id="@+id/repoDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="14sp"
+        android:layout_marginEnd="@dimen/default_margin"
         android:maxLines="1"
         android:ellipsize="end"
-        app:layout_constraintStart_toEndOf="@+id/avatar_guideline"
+        android:textAppearance="?attr/textAppearanceBody2"
+        app:layout_constraintStart_toEndOf="@+id/avatarGuideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repo_name"
-        app:layout_constraintBottom_toBottomOf="@+id/avatar"
+        app:layout_constraintTop_toBottomOf="@+id/repoName"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="A `cookiecutter` template for Android projects"/>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/stats_guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="72dp"/>
-
-
-    <ImageView
-        android:id="@+id/fork_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        android:padding="2dp"
-        android:contentDescription="Fork"
-        android:src="@drawable/ic_fork"
-        app:layout_constraintTop_toBottomOf="@+id/stats_guideline"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/fork"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/fork_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/fork_icon"
-        app:layout_constraintStart_toEndOf="@+id/fork_icon"
-        app:layout_constraintEnd_toStartOf="@+id/fork_guideline"
-        tools:text="1"/>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/fork_guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.33"/>
-
-    <ImageView
-        android:id="@+id/star_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:contentDescription="Star"
-        android:src="@drawable/ic_star"
-        app:layout_constraintTop_toBottomOf="@+id/stats_guideline"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-        app:layout_constraintStart_toEndOf="@+id/fork_guideline"/>
-
-    <TextView
-        android:id="@+id/star"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/star_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/star_icon"
-        app:layout_constraintStart_toEndOf="@+id/star_icon"
-        app:layout_constraintEnd_toStartOf="@+id/star_guideline"
-        tools:text="1"/>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/star_guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.66"/>
-
-    <ImageView
-        android:id="@+id/watch_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:contentDescription="Watch"
-        android:src="@drawable/ic_watch"
-        app:layout_constraintTop_toBottomOf="@+id/stats_guideline"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-        app:layout_constraintStart_toEndOf="@+id/star_guideline"/>
-
-    <TextView
-        android:id="@+id/watch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="16dp"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/watch_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/watch_icon"
-        app:layout_constraintStart_toEndOf="@+id/watch_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="1"/>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="128dp"/>
-
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
