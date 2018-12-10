@@ -11,6 +11,10 @@ class {{ cookiecutter.app_name | replace(' ', '') }}App : DaggerApplication() {
     @Inject lateinit var vmPolicy: StrictMode.VmPolicy
     @Inject lateinit var tree: Timber.Tree
 
+    val component by lazy {
+        DaggerAppComponent.builder().app(this).build()
+    }
+
     override fun onCreate() {
         super.onCreate()
 
@@ -20,6 +24,6 @@ class {{ cookiecutter.app_name | replace(' ', '') }}App : DaggerApplication() {
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.builder().app(this).build()
+        return component
     }
 }
