@@ -55,6 +55,7 @@ There are a number things that you still need to take care of to get your newly 
     * `ORG_GRADLE_PROJECT_KEY_PASSWORD` set to the keystores' key password
     * `ORG_GRADLE_PROJECT_STORE_PASSWORD` set to the keystores' store password
     * Any keys that we don't want living in the repo
+6. To get automated code review comments on your pull requests make sure to add the environment variable `DANGER_GITHUB_API_TOKEN` on CircleCI set to an appropriate Github API token.
 
 ### How to deal with post-generation build woes
 1. If you decided to launch Android Studio simply click `File > Sync Project with Gradle Files` to generate a `local.properties` file.
