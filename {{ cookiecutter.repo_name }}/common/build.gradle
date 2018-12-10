@@ -1,0 +1,14 @@
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    // Kotlin
+    implementation libs.kotlin.stdlib
+
+    testImplementation libs.junit
+}
+
+testReportDirName = "$rootDir/reports"
+testResultsDirName = "$rootDir/test-results"
