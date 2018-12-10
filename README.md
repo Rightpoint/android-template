@@ -14,8 +14,9 @@ Inspired by [thoughtbot]/[android-template]
  - Configures the company name, project name, repo name, package name, and gitignore.
  - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Room, Moshi, and Timber. View the [dependencies reference](https://github.com/Raizlabs/android-template/blob/develop/README.md#dependencies-reference) for a complete list.
  - Modules for separation of concerns in accordance with Clean Architecture.
+   * See [this example from Buffer](https://github.com/bufferapp/android-clean-architecture-boilerplate) to better understand the template structure
  - Proguard configuration.
- - CircleCi configuration.
+ - CircleCI configuration.
  - Signing configs and products flavors for `develop`, `sprint`, and `beta` tracks.
  - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/deploy.gradle).
  
