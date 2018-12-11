@@ -15,6 +15,10 @@ fi
 
 brew install shyiko/ktlint/ktlint
 
+if [[ ! -d .idea ]]; then
+    mkdir .idea
+fi
+
 printf 'y' | ktlint --apply-to-idea-project --android
 
 cd ..
