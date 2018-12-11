@@ -8,14 +8,14 @@ git add -A
 which -s brew
 if [[ $? != 0 ]] ; then
     # Install Homebrew
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
     brew update
 fi
 
 brew install shyiko/ktlint/ktlint
 
-ktlint --apply-to-idea-project --android
+printf 'y' | ktlint --apply-to-idea-project --android
 
 cd ..
 chmod -R 777 "{{ cookiecutter.repo_name }}"
