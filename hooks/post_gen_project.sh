@@ -44,6 +44,7 @@ apply_ktlint_to_project() {
         mkdir .idea
     fi
     printf 'y' | ktlint --apply-to-idea-project --android
+    git add -A
 }
 
 update_project_permissions() {
