@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 [[ -z "$CIRCLE_BRANCH" ]] && branch='develop' || branch="$CIRCLE_BRANCH"
 

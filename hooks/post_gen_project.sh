@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 initialize_git() {
     git init
