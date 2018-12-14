@@ -182,11 +182,21 @@ jobs:
       - restore_cache:
           <<: *cache_key
 
+      - run: bundle install
+
       - run:
           <<: *download_dependencies
 
       - run:
           <<: *run_develop_styling
+
+      - run:
+          name: Merge the ktlint reports
+          command: python report-merger.py
+
+      - run:
+          name: Run Danger for ktlint on develop
+          command: bundle exec danger --dangerfile=Dangerfile-ktlint --fail-on-errors=true
 
       - save_cache:
           <<: *cache_key
@@ -217,11 +227,21 @@ jobs:
       - restore_cache:
           <<: *cache_key
 
+      - run: bundle install
+
       - run:
           <<: *download_dependencies
 
       - run:
           <<: *run_sprint_styling
+
+      - run:
+          name: Merge the ktlint reports
+          command: python report-merger.py
+
+      - run:
+          name: Run Danger for ktlint on sprint
+          command: bundle exec danger --dangerfile=Dangerfile-ktlint --fail-on-errors=true
 
       - save_cache:
           <<: *cache_key
@@ -252,11 +272,21 @@ jobs:
       - restore_cache:
           <<: *cache_key
 
+      - run: bundle install
+
       - run:
           <<: *download_dependencies
 
       - run:
           <<: *run_prod_styling
+
+      - run:
+          name: Merge the ktlint reports
+          command: python report-merger.py
+
+      - run:
+          name: Run Danger for ktlint on prod
+          command: bundle exec danger --dangerfile=Dangerfile-ktlint --fail-on-errors=true
 
       - save_cache:
           <<: *cache_key
@@ -287,11 +317,17 @@ jobs:
       - restore_cache:
           <<: *cache_key
 
+      - run: bundle install
+
       - run:
           <<: *download_dependencies
 
       - run:
           <<: *run_develop_lint
+
+      - run:
+          name: Run Danger for Android Lint on develop
+          command: bundle exec danger --dangerfile=Dangerfile-lint --fail-on-errors=true
 
       - save_cache:
           <<: *cache_key
@@ -320,11 +356,17 @@ jobs:
       - restore_cache:
           <<: *cache_key
 
+      - run: bundle install
+
       - run:
           <<: *download_dependencies
 
       - run:
           <<: *run_sprint_lint
+
+      - run:
+          name: Run Danger for Android Lint on sprint
+          command: bundle exec danger --dangerfile=Dangerfile-lint --fail-on-errors=true
 
       - save_cache:
           <<: *cache_key
@@ -353,11 +395,17 @@ jobs:
       - restore_cache:
           <<: *cache_key
 
+      - run: bundle install
+
       - run:
           <<: *download_dependencies
 
       - run:
           <<: *run_prod_lint
+
+      - run:
+          name: Run Danger for Android Lint on prod
+          command: bundle exec danger --dangerfile=Dangerfile-lint --fail-on-errors=true
 
       - save_cache:
           <<: *cache_key

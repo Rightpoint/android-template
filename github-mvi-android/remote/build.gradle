@@ -27,6 +27,11 @@ android {
     sourceSets {
 
     }
+
+    testOptions {
+        reportDir "$rootDir/reports/app"
+        resultsDir "$rootDir/test-results/app"
+    }
 }
 
 dependencies {
@@ -58,4 +63,7 @@ dependencies {
 
     // Timber
     implementation libs.timber
+
+    testImplementation libs.android.test.ext.junit
+    testImplementation libs.android.test.ext.truth
 }

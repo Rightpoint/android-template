@@ -100,6 +100,7 @@ dependencies {
     androidTestImplementation libs.android.test.rules
     androidTestImplementation libs.android.test.runner
 
+    implementation project(':common')
     implementation project(':domain')
     implementation project(':data')
     implementation project(':device')

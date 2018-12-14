@@ -14,8 +14,9 @@ Inspired by [thoughtbot]/[android-template]
  - Configures the company name, project name, repo name, package name, and gitignore.
  - Default set of standard Android libraries including Kotlin, Rx, Dagger, Retrofit, Room, Moshi, and Timber. View the [dependencies reference](https://github.com/Raizlabs/android-template/blob/develop/README.md#dependencies-reference) for a complete list.
  - Modules for separation of concerns in accordance with Clean Architecture.
+   * See [this example from Buffer](https://github.com/bufferapp/android-clean-architecture-boilerplate) to better understand the template structure
  - Proguard configuration.
- - CircleCi configuration.
+ - CircleCI configuration.
  - Signing configs and products flavors for `develop`, `sprint`, and `beta` tracks.
  - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/deploy.gradle).
  
@@ -55,6 +56,7 @@ There are a number things that you still need to take care of to get your newly 
     * `ORG_GRADLE_PROJECT_KEY_PASSWORD` set to the keystores' key password
     * `ORG_GRADLE_PROJECT_STORE_PASSWORD` set to the keystores' store password
     * Any keys that we don't want living in the repo
+6. To get automated code review comments on your pull requests make sure to add the environment variable `DANGER_GITHUB_API_TOKEN` on CircleCI set to an appropriate Github API token.
 
 ### How to deal with post-generation build woes
 1. If you decided to launch Android Studio simply click `File > Sync Project with Gradle Files` to generate a `local.properties` file.
