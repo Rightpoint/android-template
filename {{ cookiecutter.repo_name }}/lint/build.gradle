@@ -1,0 +1,20 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+  compileOnly "com.android.tools.lint:lint-api:26.2.1"
+  compileOnly "com.android.tools.lint:lint-checks:26.2.1"
+  testImplementation libs.junit
+  testImplementation "com.android.tools.lint:lint:26.2.1"
+  testImplementation "com.android.tools.lint:lint-tests:26.2.1"
+  testImplementation "com.android.tools:testutils:26.2.1"
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+jar {
+  manifest {
+    attributes("Lint-Registry-v2": "{{ cookiecutter.package_name }}.lint.TodoIssueRegistry")
+  }
+}

@@ -118,6 +118,9 @@ ext.libs = [
                         'junit': "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}"
                 ]
         ],
+        'lint': [
+
+        ],
         'timber': "com.jakewharton.timber:timber:4.7.1",
         'autodispose': "com.uber.autodispose:autodispose-android-archcomponents-kotlin:0.8.0",
         // Test
