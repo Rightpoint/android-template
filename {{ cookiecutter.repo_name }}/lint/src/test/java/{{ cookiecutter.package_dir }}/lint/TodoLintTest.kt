@@ -15,7 +15,8 @@ class LintTests : LintDetectorTest() {
                     "package test.pkg;\n" +
                     "public class TestClass1 {\n" +
                     "    // TODO uppercase comments are detected!\n" +
-                    "    private static String todo = \"Regular strings and variables named todo or TODO are not.\";\n" +
+                    "    private static String todo = \"Regular strings and variables named todo " +
+                    "or TODO are not.\";\n" +
                     "}"
             )
         )
@@ -37,7 +38,8 @@ class LintTests : LintDetectorTest() {
                     "package test.pkg;\n" +
                     "public class TestClass1 {\n" +
                     "    // todo lowercase comments are detected too!\";\n" +
-                    "    private static String todo = \"Regular strings and variables named todo or TODO are not.\";\n" +
+                    "    private static String todo = \"Regular strings and variables named todo " +
+                    "or TODO are not.\";\n" +
                     "}"
             )
         )
@@ -56,6 +58,6 @@ class LintTests : LintDetectorTest() {
     }
 
     override fun getIssues(): List<Issue> {
-        return SampleIssueRegistry().issues
+        return TodoIssueRegistry().issues
     }
 }
