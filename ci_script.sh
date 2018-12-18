@@ -8,4 +8,4 @@ cookiecutter git@github.com:Raizlabs/android-template.git --checkout ${branch} -
 
 cd project-name-android
 
-./gradlew assembleDebug
+./gradlew lint:test assembleDebug

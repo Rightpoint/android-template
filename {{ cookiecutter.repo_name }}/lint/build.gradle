@@ -15,6 +15,14 @@ targetCompatibility = "1.8"
 
 jar {
   manifest {
-    attributes("Lint-Registry-v2": "{{ cookiecutter.package_name }}.lint.TodoIssueRegistry")
+    attributes("Lint-Registry-v2": "{{ cookiecutter.package_name }}.lint.InternalIssueRegistry")
   }
+}
+
+task copyLintJar(type: Copy) {
+  dependsOn 'clean'
+  dependsOn 'assemble'
+  from "${project.buildDir.absolutePath}/libs/lint.jar"
+  into "${System.getProperty('user.home')}/.android/lint/"
+  tasks.findByName('assemble').mustRunAfter('clean')
 }

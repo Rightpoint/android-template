@@ -6,7 +6,7 @@ import com.android.tools.lint.detector.api.Issue
 /**
  * Custom Lint issue registry for {{ cookiecutter.package_name }}.
  */
-class TodoIssueRegistry : IssueRegistry() {
+class InternalIssueRegistry : IssueRegistry() {
     override val issues: List<Issue>
-        get() = listOf(TodoDetector.TODO_ISSUE)
+        get() = listOf(TODO_ISSUE)
 }
