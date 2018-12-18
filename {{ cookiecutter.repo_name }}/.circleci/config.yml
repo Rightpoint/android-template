@@ -92,6 +92,7 @@ domain_artifacts: &domain_artifacts
 remote_artifacts: &remote_artifacts
   path: remote/build/reports
   destination: reports/remote
+  
 apk_artifacts: &apk_artifacts
   path: app/build/outputs/apk
   destination: apk
