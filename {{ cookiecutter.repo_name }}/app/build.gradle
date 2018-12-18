@@ -86,7 +86,6 @@ android {
 
     testOptions {
         reportDir "$rootDir/reports/app"
-        resultsDir "$rootDir/test-results/app"
     }
 
     configurations.all {
