@@ -25,15 +25,21 @@ download_dependencies: &download_dependencies
 
 run_develop_tests: &run_develop_tests
   name: Run Tests
-  command: ./gradlew testDevelopReleaseUnitTest domain:test --no-daemon
+  command: ./gradlew testDevelopReleaseUnitTest testReleaseUnitTest common:test domain:test --no-daemon
 
 run_sprint_tests: &run_sprint_tests
   name: Run Tests
-  command: ./gradlew testSprintReleaseUnitTest domain:test --no-daemon
+  command: ./gradlew testSprintReleaseUnitTest testReleaseUnitTest common:test domain:test --no-daemon
 
 run_prod_tests: &run_prod_tests
   name: Run Tests
-  command: ./gradlew testProductionReleaseUnitTest domain:test --no-daemon
+  command: ./gradlew testProductionReleaseUnitTest testReleaseUnitTest common:test domain:test --no-daemon
+
+copy_test_results: &copy_test_results
+  name: Copy Test Results
+  command: |
+    mkdir -p ./test-results/
+    find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ./test-results/ \;
 
 run_develop_lint: &run_develop_lint
   name: Run Lint
@@ -67,6 +73,10 @@ app_artifacts: &app_artifacts
   path: app/build/reports
   destination: reports/app
 
+cache_artifacts: &cache_artifacts
+  path: cache/build/reports
+  destination: reports/cache
+
 data_artifacts: &data_artifacts
   path: data/build/reports
   destination: reports/data
@@ -79,6 +89,9 @@ domain_artifacts: &domain_artifacts
   path: domain/build/reports
   destination: reports/domain
 
+remote_artifacts: &remote_artifacts
+  path: remote/build/reports
+  destination: reports/remote
 apk_artifacts: &apk_artifacts
   path: app/build/outputs/apk
   destination: apk
@@ -100,6 +113,9 @@ jobs:
 
       - run:
           <<: *run_develop_tests
+
+      - run:
+          <<: *copy_test_results
 
       - save_cache:
           <<: *cache_key
@@ -130,6 +146,9 @@ jobs:
       - run:
           <<: *run_sprint_tests
 
+      - run:
+          <<: *copy_test_results
+
       - save_cache:
           <<: *cache_key
           paths:
@@ -158,6 +177,9 @@ jobs:
 
       - run:
           <<: *run_prod_tests
+
+      - run:
+          <<: *copy_test_results
 
       - save_cache:
           <<: *cache_key
@@ -208,6 +230,9 @@ jobs:
           <<: *app_artifacts
 
       - store_artifacts:
+          <<: *cache_artifacts
+
+      - store_artifacts:
           <<: *data_artifacts
 
       - store_artifacts:
@@ -215,6 +240,9 @@ jobs:
 
       - store_artifacts:
           <<: *domain_artifacts
+
+      - store_artifacts:
+          <<: *remote_artifacts
 
   checkstyle_sprint:
     <<: *defaults
@@ -253,6 +281,9 @@ jobs:
           <<: *app_artifacts
 
       - store_artifacts:
+          <<: *cache_artifacts
+
+      - store_artifacts:
           <<: *data_artifacts
 
       - store_artifacts:
@@ -260,6 +291,9 @@ jobs:
 
       - store_artifacts:
           <<: *domain_artifacts
+
+      - store_artifacts:
+          <<: *remote_artifacts
 
   checkstyle_prod:
     <<: *defaults
@@ -298,6 +332,9 @@ jobs:
           <<: *app_artifacts
 
       - store_artifacts:
+          <<: *cache_artifacts
+
+      - store_artifacts:
           <<: *data_artifacts
 
       - store_artifacts:
@@ -305,6 +342,9 @@ jobs:
 
       - store_artifacts:
           <<: *domain_artifacts
+
+      - store_artifacts:
+          <<: *remote_artifacts
 
   lint_develop:
     <<: *defaults
