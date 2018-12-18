@@ -104,6 +104,7 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
     implementation project(':device')
+    lintChecks project(':lint')
 
     implementation libs.kotlin.stdlib
     implementation libs.android.x.coreKtx

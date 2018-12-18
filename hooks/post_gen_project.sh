@@ -47,6 +47,10 @@ apply_ktlint_to_project() {
     git add -A
 }
 
+apply_lint_to_project() {
+    ./gradlew lint:copyLintJar
+}
+
 update_project_permissions() {
     cd ..
     chmod -R 777 "{{ cookiecutter.repo_name }}"
@@ -80,5 +84,6 @@ launch_studio() {
 initialize_git
 install_or_update_ktlint
 apply_ktlint_to_project
+apply_lint_to_project
 update_project_permissions
 attempt_to_launch_studio

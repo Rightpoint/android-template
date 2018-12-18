@@ -28,6 +28,7 @@ versions.rxBinding      = '2.2.0'
 versions.kotshi         = '1.0.5'
 versions.ktlint         = '0.29.0'
 versions.mockito        = '2.22.0'
+versions.lint           = '26.2.1' // Gradle plugin version + 23
 ext.versions            = versions
 
 ext.libs = [
@@ -117,6 +118,13 @@ ext.libs = [
                         'runtime': "org.jetbrains.kotlin:kotlin-test:${versions.kotlin}",
                         'junit': "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}"
                 ]
+        ],
+        'lint': [
+                'api': "com.android.tools.lint:lint-api:${versions.lint}",
+                'checks': "com.android.tools.lint:lint-checks:${versions.lint}",
+                'core': "com.android.tools.lint:lint:${versions.lint}",
+                'tests': "com.android.tools.lint:lint-tests:${versions.lint}",
+                'utils': "com.android.tools:testutils:${versions.lint}"
         ],
         'timber': "com.jakewharton.timber:timber:4.7.1",
         'autodispose': "com.uber.autodispose:autodispose-android-archcomponents-kotlin:0.8.0",
