@@ -88,7 +88,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-beta04'
+        classpath 'com.android.tools.build:gradle:3.3.0-rc02'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
         classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:5.1.0"
