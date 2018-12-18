@@ -18,5 +18,4 @@ dependencies {
     testImplementation libs.junit
 }
 
-testReportDirName = "$rootDir/reports"
-testResultsDirName = "$rootDir/test-results"
+testReportDirName = "$rootDir/reports/domain"

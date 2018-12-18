@@ -30,8 +30,7 @@ android {
     }
 
     testOptions {
-        reportDir "$rootDir/reports/app"
-        resultsDir "$rootDir/test-results/app"
+        reportDir "$rootDir/reports/cache"
     }
 }
 
