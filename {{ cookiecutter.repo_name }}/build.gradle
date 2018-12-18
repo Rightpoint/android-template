@@ -7,6 +7,7 @@ apply from: "${project.rootDir}/gradle/dependencies.gradle"
 allprojects {
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
     
@@ -81,10 +82,10 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
         mavenCentral()
         maven { url 'https://maven.fabric.io/public' }
         maven { url "https://plugins.gradle.org/m2/" }
+        jcenter()
     }
 
     dependencies {
