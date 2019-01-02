@@ -545,10 +545,44 @@ jobs:
       - store_artifacts:
           <<: *apk_artifacts
 
+  dependency_checks:
+    <<: *defaults
+    steps:
+      - run:
+        <<: *update_sdk
+
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run: bundle install
+
+      - run:
+          <<: *download_dependencies
+
+      - run:
+          name: Check project dependency versions
+          command: ./gradlew dependencyUpdates --no-daemon
+
+      - run:
+          name: Run Danger for dependency version checks
+          command: bundle exec danger --dangerfile=Dangerfile-dependencies --fail-on-errors=true
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
 workflows:
   version: 2
   build_and_test:
     jobs:
+      - dependency_checks:
+          filters:
+            tags:
+              only: /.*/
       - lint_develop:
           filters:
             tags:
@@ -602,6 +636,7 @@ workflows:
             - checkstyle_develop
             - lint_develop
             - test_develop
+            - dependency_checks
           filters:
             branches:
               only: develop

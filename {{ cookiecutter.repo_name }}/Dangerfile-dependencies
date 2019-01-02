@@ -1,0 +1,5 @@
+fileContent = File.open("./build/dependencyUpdates/report.txt", "rb").read
+toRemove = "The following dependencies have later milestone versions:”
+contentToPrint = fileContent.slice(fileContent.index(toRemove)..-1)
+
+warn(contentToPrint)
