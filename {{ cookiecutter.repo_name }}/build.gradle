@@ -3,6 +3,7 @@ import com.android.build.gradle.FeaturePlugin
 import com.android.build.gradle.LibraryPlugin
 
 apply from: "${project.rootDir}/gradle/dependencies.gradle"
+apply plugin: "com.github.ben-manes.versions"
 
 allprojects {
     repositories {
@@ -93,6 +94,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
         classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:5.1.0"
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.20.0"
     }
     
     configurations.all {
