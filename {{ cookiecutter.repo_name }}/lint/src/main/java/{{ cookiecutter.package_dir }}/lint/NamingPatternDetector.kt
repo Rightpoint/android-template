@@ -55,8 +55,8 @@ class NamingPatternDetector : Detector(), Detector.UastScanner {
         }
 
         private fun process(scope: UElement, declaration: PsiNamedElement) {
-            val isPropertyBakedMethod = scope is KotlinUMethod
-                    && (scope.sourcePsi as? KtProperty)?.isMember == true
+            val isPropertyBakedMethod = scope is KotlinUMethod &&
+                    (scope.sourcePsi as? KtProperty)?.isMember == true
 
             if (declaration.name?.isDefinedCamelCase() == false && !isPropertyBakedMethod) {
                 context.report(ISSUE_NAMING_PATTERN, scope, context.getNameLocation(scope),

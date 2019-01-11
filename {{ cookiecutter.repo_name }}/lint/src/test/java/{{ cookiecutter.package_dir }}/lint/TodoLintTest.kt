@@ -67,7 +67,6 @@ class TodoLintTest : LintDetectorTest() {
         """.trimIndent()
 
         lint().files(file).run().expect(expected)
-
     }
 
     @Test

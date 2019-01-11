@@ -23,15 +23,15 @@ private const val COMMENT = "TODO"
 private val pattern = Pattern.compile("[\\t]*[//].*$COMMENT.*", Pattern.CASE_INSENSITIVE)
 
 val ISSUE_TODO = Issue.create(
-    "UnresolvedTodo",
-    "Unresolved todo",
-    """This check highlights comments indicating that some part of the code is unresolved.
+        "UnresolvedTodo",
+        "Unresolved todo",
+        """This check highlights comments indicating that some part of the code is unresolved.
         Please address and remove all **TODO** comments before ship!
         """.trimIndent(),
-    Category.CORRECTNESS,
-    PRIORITY,
-    Severity.WARNING,
-    Implementation(TodoDetector::class.java, Scope.JAVA_FILE_SCOPE)
+        Category.CORRECTNESS,
+        PRIORITY,
+        Severity.WARNING,
+        Implementation(TodoDetector::class.java, Scope.JAVA_FILE_SCOPE)
 )
 
 /**
