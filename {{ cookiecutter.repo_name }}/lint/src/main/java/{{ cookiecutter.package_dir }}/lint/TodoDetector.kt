@@ -18,19 +18,20 @@ import org.jetbrains.uast.UElement
 import org.w3c.dom.Document
 import java.util.regex.Pattern
 
+private const val PRIORITY = 6
 private const val COMMENT = "TODO"
 private val pattern = Pattern.compile("[\\t]*[//].*$COMMENT.*", Pattern.CASE_INSENSITIVE)
 
-val TODO_ISSUE = Issue.create(
-    "UnresolvedTodo",
-    "Unresolved todo",
-    """This check highlights comments indicating that some part of the code is unresolved.
+val ISSUE_TODO = Issue.create(
+        "UnresolvedTodo",
+        "Unresolved todo",
+        """This check highlights comments indicating that some part of the code is unresolved.
         Please address and remove all **TODO** comments before ship!
         """.trimIndent(),
-    Category.CORRECTNESS,
-    6,
-    Severity.WARNING,
-    Implementation(TodoDetector::class.java, Scope.JAVA_FILE_SCOPE)
+        Category.CORRECTNESS,
+        PRIORITY,
+        Severity.WARNING,
+        Implementation(TodoDetector::class.java, Scope.JAVA_FILE_SCOPE)
 )
 
 /**
@@ -52,7 +53,7 @@ class TodoDetector : Detector(), UastScanner, GradleScanner, OtherFileScanner, X
             val start = matcher.start()
             val end = matcher.end()
             val location = Location.create(context.file, source, start, end)
-            context.report(TODO_ISSUE, location, "TODO comment found")
+            context.report(ISSUE_TODO, location, "TODO comment found")
         }
     }
 }
