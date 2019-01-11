@@ -14,4 +14,6 @@ class InternalIssueRegistry : IssueRegistry() {
                 ISSUE_NAMING_PATTERN,
                 ISSUE_DEFAULT_LAYOUT_ATTRIBUTE
         )
+
+    override val api: Int = com.android.tools.lint.detector.api.CURRENT_API
 }
