@@ -16,7 +16,7 @@ android {
         targetSdkVersion buildConfig.targetSdk
         versionCode buildConfig.code
         versionName buildConfig.name
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -98,6 +98,7 @@ dependencies {
     androidTestImplementation libs.android.test.espresso.contrib
     androidTestImplementation libs.android.test.rules
     androidTestImplementation libs.android.test.runner
+    androidTestImplementation "androidx.test.ext:junit:1.1.0"
 
     implementation project(':common')
     implementation project(':domain')
