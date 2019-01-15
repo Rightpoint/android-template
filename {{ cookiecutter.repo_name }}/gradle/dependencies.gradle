@@ -29,6 +29,7 @@ versions.kotshi         = '1.0.5'
 versions.ktlint         = '0.29.0'
 versions.mockito        = '2.22.0'
 versions.lint           = '26.2.1' // Gradle plugin version + 23
+versions.jacoco         = '0.8.2'
 ext.versions            = versions
 
 ext.libs = [
@@ -135,5 +136,6 @@ ext.libs = [
                 'android' : "org.mockito:mockito-android:${versions.mockito}"
         ],
         'assertj': "org.assertj:assertj-core:3.11.1",
-        'dexmaker': "com.linkedin.dexmaker:dexmaker-mockito:2.19.1"
+        'dexmaker': "com.linkedin.dexmaker:dexmaker-mockito:2.19.1",
+        'jacoco': "org.jacoco:org.jacoco.core:$versions.jacoco"
 ]
