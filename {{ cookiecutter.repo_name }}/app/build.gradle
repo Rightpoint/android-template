@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android.extensions'
+apply from: "$rootDir/gradle/coverage.gradle"
 
 if (isCiBuild) {
     apply from: "${project.rootDir}/gradle/deploy.gradle"
@@ -22,6 +23,7 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
+            testCoverageEnabled true
         }
         release {
             minifyEnabled true
