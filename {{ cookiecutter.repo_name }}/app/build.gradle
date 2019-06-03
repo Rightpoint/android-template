@@ -1,34 +1,17 @@
+import dependencies.Libraries
+
 apply plugin: 'com.android.application'
-apply plugin: 'org.jetbrains.kotlin.android.extensions'
+apply plugin: 'android-config'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'ktlint-config'
+apply plugin: 'hockeyapp-config'
 apply from: "$rootDir/gradle/coverage.gradle"
 
-if (isCiBuild) {
-    apply from: "${project.rootDir}/gradle/deploy.gradle"
-}
-
 android {
-    compileSdkVersion buildConfig.compileSdk
-    buildToolsVersion buildConfig.buildTools
 
     defaultConfig {
         applicationId "{{ cookiecutter.package_name }}"
         testApplicationId "{{ cookiecutter.package_name }}.test"
-        minSdkVersion buildConfig.minSdk
-        targetSdkVersion buildConfig.targetSdk
-        versionCode buildConfig.code
-        versionName buildConfig.name
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            testCoverageEnabled true
-        }
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 
     signingConfigs {
@@ -72,35 +55,14 @@ android {
             signingConfig signingConfigs.production
         }
     }
-
-    sourceSets {
-
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    lintOptions {
-        checkDependencies true
-    }
-
-    testOptions {
-        reportDir "$rootDir/reports/app"
-    }
-
-    configurations.all {
-        resolutionStrategy.force libs.moshi
-    }
 }
 
 dependencies {
-    androidTestImplementation libs.android.test.espresso.core
-    androidTestImplementation libs.android.test.espresso.contrib
-    androidTestImplementation libs.android.test.rules
-    androidTestImplementation libs.android.test.runner
-    androidTestImplementation "androidx.test.ext:junit:1.1.0"
+    androidTestImplementation Libraries.androidxEspressoCore
+    androidTestImplementation Libraries.androidxEspressoContrib
+    androidTestImplementation Libraries.androidxTestRules
+    androidTestImplementation Libraries.androidxTestRunner
+    androidTestImplementation Libraries.androidxTestExtJUnit
 
     implementation project(':common')
     implementation project(':domain')
@@ -108,25 +70,28 @@ dependencies {
     implementation project(':device')
     lintChecks project(':lint')
 
-    implementation libs.kotlin.stdlib
-    implementation libs.android.x.coreKtx
-    implementation libs.android.x.annotations
-    implementation libs.android.x.design
-    implementation libs.android.x.constraintLayout
+    implementation Libraries.kotlinStdlib
+    implementation Libraries.androidxCore
+    implementation Libraries.androidxAnnotations
+    implementation Libraries.materialComponents
+    implementation Libraries.androidxConstraintLayout
 
-    implementation libs.dagger.runtime
-    kapt libs.dagger.compiler
-    implementation libs.dagger.android.support
-    kapt libs.dagger.android.processor
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
+    implementation Libraries.daggerAndroidSupport
+    kapt Libraries.daggerAndroidCompiler
 
-    implementation libs.rx.android
-    implementation libs.rx.java
-    implementation libs.rx.relay
+    implementation Libraries.rxAndroid
+    implementation Libraries.rxJava
+    implementation Libraries.rxRelay
 
-    implementation libs.autodispose
+    implementation Libraries.autoDisposeBase
+    implementation Libraries.autoDisposeKtx
+    implementation Libraries.autoDisposeJetpack
+    implementation Libraries.autoDisposeJetpackKtx
 
-    implementation libs.timber
+    implementation Libraries.timber
 
-    testImplementation libs.android.test.ext.junit
-    testImplementation libs.android.test.ext.truth
+    testImplementation Libraries.androidxTestExtJUnit
+    testImplementation Libraries.androidxTestExtTruth
 }

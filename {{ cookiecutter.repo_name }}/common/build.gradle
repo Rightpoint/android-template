@@ -1,13 +1,11 @@
-apply plugin: 'kotlin'
+import dependencies.Libraries
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+apply plugin: 'kotlin-config'
+apply plugin: 'ktlint-config'
 
 dependencies {
     // Kotlin
-    implementation libs.kotlin.stdlib
+    implementation Libraries.kotlinStdlib
 
-    testImplementation libs.junit
+    testImplementation Libraries.junit
 }
-
-testReportDirName = "$rootDir/reports/common"

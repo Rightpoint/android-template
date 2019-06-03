@@ -1,8 +1,6 @@
-import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.FeaturePlugin
-import com.android.build.gradle.LibraryPlugin
+import dependencies.Plugins
+import dependencies.Versions
 
-apply from: "${project.rootDir}/gradle/dependencies.gradle"
 apply plugin: "com.github.ben-manes.versions"
 
 allprojects {
@@ -11,7 +9,7 @@ allprojects {
         mavenCentral()
         jcenter()
     }
-    
+
     // Show all compile time errors
     // See: https://movieos.org/2017/android-room-data-binding-compile-time-errors/
     gradle.projectsEvaluated {
@@ -32,44 +30,13 @@ allprojects {
     }
 }
 
-static void applyAndroidPlugins(Project project) {
-    project.apply plugin: 'kotlin-android'
-    project.apply plugin: 'kotlin-kapt'
-    project.apply from: "$project.rootDir/gradle/quality.gradle"
-}
-
 subprojects { subProject ->
-    // The actual app modules
-    plugins.withType(AppPlugin) {
-        applyAndroidPlugins(subProject)
-    }
-
-    // Any Android library modules
-    plugins.withType(LibraryPlugin) {
-        applyAndroidPlugins(subProject)
-    }
-
-    // Any Instant App modules
-    plugins.withType(FeaturePlugin) {
-        applyAndroidPlugins(subProject)
-    }
-
-    subProject.apply plugin: "org.jlleitschuh.gradle.ktlint"
-    subProject.ktlint {
-        version = versions.ktlint
-        android = true
-        outputToConsole = true
-        reporters = ["CHECKSTYLE", "JSON"]
-        ignoreFailures = isCiBuild
-        verbose = true
-    }
-
     configurations.all {
         resolutionStrategy {
             eachDependency { details ->
                 // Force all of the Kotlin libraries to use the same version
                 if (details.requested.group == 'org.jetbrains.kotlin') {
-                    details.useVersion versions.kotlin
+                    details.useVersion Versions.kotlin
                 }
             }
         }
@@ -77,8 +44,6 @@ subprojects { subProject ->
 }
 
 buildscript {
-    apply from: "${project.rootDir}/gradle/dependencies.gradle"
-
     ext.isCiBuild = System.getenv("CI") == 'true'
 
     repositories {
@@ -90,19 +55,17 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-rc02'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6'
-        classpath "gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:5.1.0"
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.20.0"
+        classpath Plugins.android
+        classpath Plugins.kotlin
+        classpath Plugins.versioning
     }
-    
+
     configurations.all {
         resolutionStrategy {
             eachDependency { details ->
                 // Force all of the Kotlin libraries to use the same version
                 if (details.requested.group == 'org.jetbrains.kotlin') {
-                    details.useVersion versions.kotlin
+                    details.useVersion Versions.kotlin
                 }
             }
         }

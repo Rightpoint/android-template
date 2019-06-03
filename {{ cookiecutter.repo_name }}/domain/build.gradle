@@ -1,21 +1,18 @@
-apply plugin: 'kotlin'
-apply plugin: 'kotlin-kapt'
+import dependencies.Libraries
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+apply plugin: 'kotlin-config'
+apply plugin: 'ktlint-config'
 
 dependencies {
     // Dagger
-    implementation libs.dagger.runtime
-    kapt libs.dagger.compiler
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
 
     // Kotlin
-    implementation libs.kotlin.stdlib
+    implementation Libraries.kotlinStdlib
 
     // Rx
-    implementation libs.rx.java
+    implementation Libraries.rxJava
 
-    testImplementation libs.junit
+    testImplementation Libraries.junit
 }
-
-testReportDirName = "$rootDir/reports/domain"

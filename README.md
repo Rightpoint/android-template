@@ -18,7 +18,7 @@ Inspired by [thoughtbot]/[android-template]
  - Proguard configuration.
  - CircleCI configuration.
  - Signing configs and products flavors for `develop`, `sprint`, and `beta` tracks.
- - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](%7B%7B%20cookiecutter.repo_name%20%7D%7D/gradle/deploy.gradle).
+ - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](%7B%7B%20cookiecutter.repo_name%20%7D%7D/buildSrc/src/main/java/plugins/HockeyConfigPlugin.kt).
  
 ## Contributing
 We would love your help! View the [contributing guide](./contributing.md) to get started.

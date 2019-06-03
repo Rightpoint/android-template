@@ -1,70 +1,36 @@
+import dependencies.Libraries
+
 apply plugin: 'com.android.library'
+apply plugin: 'android-config'
+apply plugin: 'ktlint-config'
 apply from: "$rootDir/gradle/coverage.gradle"
-
-android {
-    compileSdkVersion buildConfig.compileSdk
-    buildToolsVersion buildConfig.buildTools
-
-    defaultConfig {
-        minSdkVersion buildConfig.minSdk
-        targetSdkVersion buildConfig.targetSdk
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            testCoverageEnabled true
-        }
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    sourceSets {
-
-    }
-
-    testOptions {
-        reportDir "$rootDir/reports/remote"
-    }
-}
 
 dependencies {
     // Kotlin
-    implementation libs.kotlin.stdlib
+    implementation Libraries.kotlinStdlib
 
     // Dagger
-    implementation libs.dagger.runtime
-    kapt libs.dagger.compiler
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
 
     // OkHttp
-    api libs.okhttp.client
-    api libs.okhttp.logging
+    api Libraries.okhttp
+    api Libraries.okhttpLogging
 
     // Retrofit
-    api libs.retrofit.client
-    api libs.retrofit.adapterRxJava2
-    api libs.retrofit.converterMoshi
+    api Libraries.retrofit
+    api Libraries.retrofitRxJavaAdapter
+    api Libraries.retrofitMoshiConverter
 
     // Moshi
-    implementation libs.moshi
-
-    // Kotshi
-    implementation libs.kotshi.api
-    kapt libs.kotshi.compiler
+    implementation Libraries.moshi
 
     // RxJava
-    implementation libs.rx.java
+    implementation Libraries.rxJava
 
     // Timber
-    implementation libs.timber
+    implementation Libraries.timber
 
-    testImplementation libs.android.test.ext.junit
-    testImplementation libs.android.test.ext.truth
+    testImplementation Libraries.androidxTestExtJUnit
+    testImplementation Libraries.androidxTestExtTruth
 }

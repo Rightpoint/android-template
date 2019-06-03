@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }};
+package {{ cookiecutter.package_name }}
 
 import android.os.StrictMode
 
