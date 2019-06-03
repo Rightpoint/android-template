@@ -1,60 +1,29 @@
+import dependencies.Libraries
+
 apply plugin: 'com.android.library'
+apply plugin: 'android-config'
+apply plugin: 'ktlint-config'
 apply from: "$rootDir/gradle/coverage.gradle"
-
-android {
-    compileSdkVersion buildConfig.compileSdk
-    buildToolsVersion buildConfig.buildTools
-
-    defaultConfig {
-        minSdkVersion buildConfig.minSdk
-        targetSdkVersion buildConfig.targetSdk
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            testCoverageEnabled true
-        }
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    sourceSets {
-
-    }
-
-    testOptions {
-        reportDir "$rootDir/reports/data"
-    }
-}
 
 dependencies {
     implementation project(":domain")
     api project(':cache')
-
     api project(':remote')
 
     // Android
-    implementation libs.android.x.annotations
+    implementation Libraries.androidxAnnotations
 
     // Dagger
-    implementation libs.dagger.runtime
-    kapt libs.dagger.compiler
+    implementation Libraries.dagger
+    kapt Libraries.daggerCompiler
 
     // Kotlin
-    implementation libs.kotlin.stdlib
+    implementation Libraries.kotlinStdlib
 
     // Rx
-    implementation libs.rx.java
-    implementation libs.rx.android
+    implementation Libraries.rxJava
+    implementation Libraries.rxAndroid
 
-    testImplementation libs.android.test.ext.junit
-    testImplementation libs.android.test.ext.truth
+    testImplementation Libraries.androidxTestExtJUnit
+    testImplementation Libraries.androidxTestExtTruth
 }

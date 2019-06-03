@@ -1,52 +1,22 @@
+import dependencies.Libraries
+
 apply plugin: 'com.android.library'
+apply plugin: 'android-config'
+apply plugin: 'ktlint-config'
 apply from: "$rootDir/gradle/coverage.gradle"
 
-android {
-    compileSdkVersion buildConfig.compileSdk
-    buildToolsVersion buildConfig.buildTools
-
-    defaultConfig {
-        minSdkVersion buildConfig.minSdk
-        targetSdkVersion buildConfig.targetSdk
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    buildTypes {
-        debug {
-            minifyEnabled false
-            testCoverageEnabled true
-        }
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    sourceSets {
-
-    }
-
-    testOptions {
-        reportDir "$rootDir/reports/device"
-    }
-}
-
 dependencies {
-    androidTestImplementation libs.android.test.espresso.core
-    androidTestImplementation libs.android.test.espresso.contrib
-    androidTestImplementation libs.android.test.rules
-    androidTestImplementation libs.android.test.runner
+    androidTestImplementation Libraries.androidxEspressoCore
+    androidTestImplementation Libraries.androidxEspressoContrib
+    androidTestImplementation Libraries.androidxTestRules
+    androidTestImplementation Libraries.androidxTestRunner
 
     // Android
-    implementation libs.android.x.annotations
+    implementation Libraries.androidxAnnotations
 
     // Kotlin
-    implementation libs.kotlin.stdlib
+    implementation Libraries.kotlinStdlib
 
-    testImplementation libs.android.test.ext.junit
-    testImplementation libs.android.test.ext.truth
+    testImplementation Libraries.androidxTestExtJUnit
+    testImplementation Libraries.androidxTestExtTruth
 }

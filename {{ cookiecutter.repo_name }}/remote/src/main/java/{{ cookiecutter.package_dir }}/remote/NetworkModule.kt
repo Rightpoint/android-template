@@ -32,9 +32,7 @@ object NetworkModule {
                 .addInterceptor(logging)
                 .build()
 
-        val moshi = Moshi.Builder()
-                .add(AppJsonAdapterFactory.INSTANCE)
-                .build()
+        val moshi = Moshi.Builder().build()
 
         return Retrofit.Builder()
             .baseUrl(requireNotNull(url))

@@ -1,4 +1,3 @@
-apply from: "$rootDir/gradle/dependencies.gradle"
 apply plugin: 'jacoco'
 
 def fileFilter = [
@@ -7,7 +6,7 @@ def fileFilter = [
 def mainSrc = "$project.projectDir/src/main/kotlin"
 def configDir = "${project.rootDir}/config"
 def reportDir = "${project.buildDir}/reports"
-jacoco.toolVersion = versions.jacoco
+jacoco.toolVersion = "0.8.4"
 
 def MINIMUM_COVERAGE = 0.60     // The minimum code-coverage percentage
 
