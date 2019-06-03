@@ -46,7 +46,14 @@ class GitHelper(rootDir: File) {
 
     private fun Git.getLogForPreviousMerge(): Iterable<RevCommit> {
         return gitLogFor {
-            log().setRevFilter(RevFilter.ONLY_MERGES).call().reversed().map { it.toObjectId() }
+            try {
+                log().setRevFilter(RevFilter.ONLY_MERGES).call()
+                    .reversed().map { it.toObjectId() }
+            } catch (e: NoHeadException) {
+                commit().setMessage("Initial commit").call()
+                log().all().setRevFilter(RevFilter.NO_MERGES).call()
+                    .reversed().map { it.toObjectId() }
+            }
         }
     }
 

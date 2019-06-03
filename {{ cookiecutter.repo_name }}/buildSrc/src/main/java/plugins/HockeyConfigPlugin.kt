@@ -11,7 +11,11 @@ class HockeyConfigPlugin : Plugin<Project> {
         if (System.getenv("CI") == "true") {
             target.plugins.apply("de.felixschulze.gradle.hockeyapp")
             val extension = target.extensions.getByType(HockeyAppPluginExtension::class.java)
-            extension.configure(target)
+            try {
+                extension.configure(target)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
