@@ -7,7 +7,7 @@ Note: Code completion and other IDE sugar will not be functional because this is
 
 ### Testing Changes
 1. Make your changes to the cookie cutter project.
-2. Use [these instructions](https://github.com/Raizlabs/android-template#usage) to generate a project based on your changes.
+2. Use [these instructions](https://github.com/Rightpoint/android-template#usage) to generate a project based on your changes.
 
 Note: Be sure to use the cookiecutter namespace e.g. `{{ cookiecutter.package_name }}` to make generated files compile properly. 
 

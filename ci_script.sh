@@ -4,7 +4,7 @@
 
 echo ${branch}
 
-cookiecutter git@github.com:Raizlabs/android-template.git --checkout ${branch} --no-input
+cookiecutter git@github.com:Rightpoint/android-template.git --checkout ${branch} --no-input
 
 cd project-name-android
 
