@@ -28,7 +28,7 @@ class RepoListFragment : DaggerFragment(), Consumer<State> {
     @Inject lateinit var viewModel: RepoListViewModel
 
     val onCommitClick = { name: String ->
-        CommitBottomSheetDialog.newInstance("Raizlabs", name)
+        CommitBottomSheetDialog.newInstance("Rightpoint", name)
             .show(childFragmentManager, "Commit")
     }
 
@@ -53,7 +53,7 @@ class RepoListFragment : DaggerFragment(), Consumer<State> {
         super.onViewCreated(view, savedInstanceState)
         rootLayout.loadLayoutDescription(R.xml.repo_list_layout_states)
         setUpRecyclerView()
-        actions.accept(Action.LoadListOfRepos("Raizlabs"))
+        actions.accept(Action.LoadListOfRepos("Rightpoint"))
     }
 
     private fun setUpRecyclerView() {
