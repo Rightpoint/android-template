@@ -8,7 +8,7 @@ first = None
 ktlintFile = 'ktlint-report.xml'
 
 for root, dir, files in os.walk("."):
-        for items in fnmatch.filter(files, "ktlint-*.xml"):
+        for items in fnmatch.filter(files, "ktlint*.xml"):
                 print root
                 print dir
                 data = ElementTree.parse(root + "/" + items).getroot()
