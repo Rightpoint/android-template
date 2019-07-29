@@ -1,6 +1,5 @@
 package {{ cookiecutter.package_name }}.domain.interactor
 
-
 sealed class Result<T> {
     fun isSuccessful() = this is Success
 
