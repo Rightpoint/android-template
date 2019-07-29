@@ -75,6 +75,7 @@ dependencies {
     implementation Libraries.androidxAnnotations
     implementation Libraries.materialComponents
     implementation Libraries.androidxConstraintLayout
+    implementation Libraries.androidxViewModel
 
     implementation Libraries.dagger
     kapt Libraries.daggerCompiler
@@ -84,6 +85,9 @@ dependencies {
     implementation Libraries.rxAndroid
     implementation Libraries.rxJava
     implementation Libraries.rxRelay
+
+    implementation Libraries.coroutinesCore
+    implementation Libraries.coroutinesAndroid
 
     implementation Libraries.autoDisposeBase
     implementation Libraries.autoDisposeKtx
