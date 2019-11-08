@@ -480,7 +480,7 @@ jobs:
 
       - run:
           name: Deploy to develop track on App Center
-          command: ./gradlew assembleDevelopRelease appCenterUploadDevelopRelease --info --no-daemon
+          command: ./gradlew app:assembleDevelopRelease app:appCenterUploadDevelopRelease --info --no-daemon
 
       - save_cache:
           <<: *cache_key
@@ -507,7 +507,7 @@ jobs:
 
       - run:
           name: Deploy to sprint track on App Center
-          command: ./gradlew assembleSprintRelease appCenterUploadSprintRelease --info --no-daemon
+          command: ./gradlew app:assembleSprintRelease app:appCenterUploadSprintRelease --info --no-daemon
 
       - save_cache:
           <<: *cache_key
@@ -534,7 +534,7 @@ jobs:
 
       - run:
           name: Deploy to production track on App Center
-          command: ./gradlew assembleProductionRelease appCenterUploadProductionRelease --info --no-daemon
+          command: ./gradlew app:assembleProductionRelease app:appCenterUploadProductionRelease --info --no-daemon
 
       - save_cache:
           <<: *cache_key
