@@ -1,6 +1,7 @@
 package {{ cookiecutter.package_name }}.remote
 
 import com.squareup.moshi.Moshi
+import dagger.Lazy
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -24,19 +25,24 @@ object NetworkModule {
     @Provides
     @Singleton
     @JvmStatic
-    fun providesRetrofit(url: HttpUrl?, level: HttpLoggingInterceptor.Level): Retrofit {
+    fun providesOkHttpClient(level: HttpLoggingInterceptor.Level): OkHttpClient {
         val logging = HttpLoggingInterceptor { message -> Timber.tag("OkHttp").v(message) }
             .apply { this.level = level }
 
-        val client = OkHttpClient.Builder()
-                .addInterceptor(logging)
-                .build()
+        return OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+    }
 
+    @Provides
+    @Singleton
+    @JvmStatic
+    fun providesRetrofit(url: HttpUrl?, client: Lazy<OkHttpClient>): Retrofit {
         val moshi = Moshi.Builder().build()
 
         return Retrofit.Builder()
             .baseUrl(requireNotNull(url))
-            .client(client)
+            .callFactory { client.get().newCall(it) }
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()

@@ -17,6 +17,10 @@ configure<GradlePluginDevelopmentExtension> {
             id = "hockeyapp-config"
             implementationClass = "plugins.HockeyConfigPlugin"
         }
+        create("appcenter-config") {
+            id = "appcenter-config"
+            implementationClass = "plugins.AppCenterConfigPlugin"
+        }
         create("ktlint-config") {
             id = "ktlint-config"
             implementationClass = "plugins.KtlintConfigPlugin"
@@ -35,6 +39,7 @@ dependencies {
     implementation("com.android.tools.build:gradle:3.4.1")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31")
     implementation("de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6")
+    implementation("gradle.plugin.com.betomorrow.gradle:appcenter-plugin:1.1.16")
     implementation("org.eclipse.jgit:org.eclipse.jgit.pgm:5.3.1.201904271842-r")
     implementation("org.jlleitschuh.gradle:ktlint-gradle:8.0.0")
 }

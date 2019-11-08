@@ -479,8 +479,8 @@ jobs:
           at: ~/{{ cookiecutter.repo_name }}
 
       - run:
-          name: Deploy to develop track on HockeyApp
-          command: ./gradlew app:uploadDevelopReleaseToHockeyApp --info --no-daemon
+          name: Deploy to develop track on App Center
+          command: ./gradlew assembleDevelopRelease appCenterUploadDevelopRelease --info --no-daemon
 
       - save_cache:
           <<: *cache_key
@@ -506,8 +506,8 @@ jobs:
           at: ~/{{ cookiecutter.repo_name }}
 
       - run:
-          name: Deploy to sprint track on HockeyApp
-          command: ./gradlew app:uploadSprintReleaseToHockeyApp --info --no-daemon
+          name: Deploy to sprint track on App Center
+          command: ./gradlew assembleSprintRelease appCenterUploadSprintRelease --info --no-daemon
 
       - save_cache:
           <<: *cache_key
@@ -533,8 +533,8 @@ jobs:
           at: ~/{{ cookiecutter.repo_name }}
 
       - run:
-          name: Deploy to beta track on HockeyApp
-          command: ./gradlew app:uploadProductionReleaseToHockeyApp --info --no-daemon
+          name: Deploy to production track on App Center
+          command: ./gradlew assembleProductionRelease appCenterUploadProductionRelease --info --no-daemon
 
       - save_cache:
           <<: *cache_key
