@@ -18,7 +18,7 @@ Inspired by [thoughtbot]/[android-template]
  - Proguard configuration.
  - CircleCI configuration.
  - Signing configs and products flavors for `develop`, `sprint`, and `beta` tracks.
- - [HockeyApp](https://www.hockeyapp.net/) deploy [configuration](%7B%7B%20cookiecutter.repo_name%20%7D%7D/buildSrc/src/main/java/plugins/HockeyConfigPlugin.kt).
+ - [App Center](https://appcenter.ms/) deploy [configuration](%7B%7B%20cookiecutter.repo_name%20%7D%7D/buildSrc/src/main/java/plugins/AppCenterConfigPlugin.kt).
  
 ## Contributing
 We would love your help! View the [contributing guide](./contributing.md) to get started.
@@ -45,14 +45,10 @@ There are a number things that you still need to take care of to get your newly 
     * Try to follow the convention of app name and build flavor for the alias:
         * For example: `doormanDevelop`, `doormanSprint` and `doormanBeta`
     * Update the `app/build.gradle` file to reflect these keystore values
-3. Create `develop` and `sprint` tracks on Hockey under the `Raizlabs` organization or else the Raizlabs Hockey API token will not work and a `404` will be thrown when attempting to deploy to Hockey. The Raizlabs Hockey API token is in the Raizlabs vault in 1Password.
+3. Create `develop` and `sprint` tracks on App Center under the `RightpointApps` organization or else the App Center API token will not work and a `404` will be thrown when attempting to deploy to App Center. The Rightpoint App Center API token is in the Development vault in 1Password.
 4. Set your project up on CircleCI
 5. Add the following environment variables to CircleCI **(A note on the following environment variables: they are prefixed with `ORG_GRADLE_PROJECT_` so they can be accessed within our Gradle scripts as project properties. This makes it easier for us to fake them outside of a CI environment.)**
-    * `ORG_GRADLE_PROJECT_HOCKEYAPP_TOKEN` set to Raizlabs' HockeyApp token
-    * The IDs for each of the tracks being deployed to HockeyApp:
-        * `ORG_GRADLE_PROJECT_HOCKEYAPP_ID_DEVELOP` set to the develop track's HockeyApp ID
-        * `ORG_GRADLE_PROJECT_HOCKEYAPP_ID_SPRINT` set to the sprint track's HockeyApp ID
-        * Beta is optional*
+    * `ORG_GRADLE_PROJECT_APPCENTER_TOKEN` set to Rightpoint's App Center token
     * `ORG_GRADLE_PROJECT_KEY_PASSWORD` set to the keystores' key password
     * `ORG_GRADLE_PROJECT_STORE_PASSWORD` set to the keystores' store password
     * Any keys that we don't want living in the repo

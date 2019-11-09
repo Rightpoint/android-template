@@ -10,11 +10,18 @@ class AppCenterConfigPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         if (System.getenv("CI") == "true") {
             target.plugins.apply("com.betomorrow.appcenter")
-            val extension = target.extensions.getByType(AppCenterExtension::class.java)
+            val extension = target.extensions.getByType<AppCenterExtension>()
             try {
                 extension.configure(target)
             } catch (e: Exception) {
                 e.printStackTrace()
+            }
+            target.afterEvaluate {
+                tasks.forEach { task ->
+                    if (task.name.contains("appCenterUpload")) {
+                        task.dependsOn(task.name.replace("appCenterUpload", "assemble"))
+                    }
+                }
             }
         }
     }
@@ -23,7 +30,7 @@ class AppCenterConfigPlugin : Plugin<Project> {
         val gitHelper = GitHelper(target.rootDir)
 
         apiToken = target.propOrEmpty("APPCENTER_TOKEN")
-        ownerName = "RightpointApps"
+        ownerName = target.propOrEmpty("APPCENTER_OWNER_NAME")
         notifyTesters = false
         apps {
             register("developRelease") {
