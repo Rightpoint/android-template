@@ -3,6 +3,7 @@ package plugins
 import com.betomorrow.gradle.appcenter.extensions.AppCenterExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.getByType
 import utils.GitHelper
 import utils.propOrEmpty
 
