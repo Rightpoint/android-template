@@ -4,7 +4,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-config'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'ktlint-config'
-apply plugin: 'hockeyapp-config'
+apply plugin: 'appcenter-config'
 apply from: "$rootDir/gradle/coverage.gradle"
 
 android {
@@ -78,8 +78,6 @@ dependencies {
 
     implementation Libraries.dagger
     kapt Libraries.daggerCompiler
-    implementation Libraries.daggerAndroidSupport
-    kapt Libraries.daggerAndroidCompiler
 
     implementation Libraries.rxAndroid
     implementation Libraries.rxJava

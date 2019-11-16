@@ -1,12 +1,11 @@
 package {{ cookiecutter.package_name }}
 
+import android.app.Application
 import android.os.StrictMode
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
 import timber.log.Timber
 import javax.inject.Inject
 
-class {{ cookiecutter.app_name | replace(' ', '') }}App : DaggerApplication() {
+class {{ cookiecutter.app_name | replace(' ', '') }}App : Application() {
     @Inject lateinit var threadPolicy: StrictMode.ThreadPolicy
     @Inject lateinit var vmPolicy: StrictMode.VmPolicy
     @Inject lateinit var tree: Timber.Tree
@@ -21,9 +20,5 @@ class {{ cookiecutter.app_name | replace(' ', '') }}App : DaggerApplication() {
         StrictMode.setThreadPolicy(threadPolicy)
         StrictMode.setVmPolicy(vmPolicy)
         Timber.plant(tree)
-    }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return component
     }
 }
