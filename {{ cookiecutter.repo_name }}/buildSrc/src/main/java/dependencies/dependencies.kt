@@ -25,9 +25,10 @@ object Versions {
     const val kotlin = "1.3.31"
     const val ktlint = "0.33.0"
     const val okhttp = "3.14.2"
-    const val retrofit = "2.5.0"
+    const val retrofit = "2.6.0"
     const val roboletric = "4.3"
     const val room = "2.1.0-rc01"
+    const val coroutines = "1.1.1"
 }
 
 object Plugins {
@@ -116,6 +117,10 @@ object Libraries {
 
     // Timber
     const val timber = "com.jakewharton.timber:timber:4.7.1"
+
+    //Coroutines
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     const val junit = "junit:junit:4.12"
 

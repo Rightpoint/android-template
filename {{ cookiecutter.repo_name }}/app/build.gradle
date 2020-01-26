@@ -75,6 +75,8 @@ dependencies {
     implementation Libraries.androidxAnnotations
     implementation Libraries.materialComponents
     implementation Libraries.androidxConstraintLayout
+    implementation Libraries.androidxViewModel
+    implementation Libraries.androidxLifecycleExt
 
     implementation Libraries.dagger
     kapt Libraries.daggerCompiler
