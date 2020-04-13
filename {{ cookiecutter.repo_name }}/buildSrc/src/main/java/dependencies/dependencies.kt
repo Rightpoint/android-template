@@ -22,7 +22,7 @@ object Versions {
     const val dagger = "2.23.1"
     const val espresso = "3.2.0"
     const val glide = "4.9.0"
-    const val kotlin = "1.3.31"
+    const val kotlin = "1.3.70"
     const val ktlint = "0.33.0"
     const val okhttp = "3.14.2"
     const val retrofit = "2.5.0"

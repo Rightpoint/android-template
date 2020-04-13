@@ -6,7 +6,7 @@ def fileFilter = [
 def mainSrc = "$project.projectDir/src/main/kotlin"
 def configDir = "${project.rootDir}/config"
 def reportDir = "${project.buildDir}/reports"
-jacoco.toolVersion = "0.8.4"
+jacoco.toolVersion = "0.8.5"
 
 def MINIMUM_COVERAGE = 0.60     // The minimum code-coverage percentage
 
@@ -45,18 +45,18 @@ project.afterEvaluate {
                     html.enabled = true
                 }
 
-                sourceDirectories = files([mainSrc])
-                classDirectories = files([debugTree])
-                executionData = fileTree(dir: project.buildDir, includes: [
+                sourceDirectories.from = files([mainSrc])
+                classDirectories.from = files([debugTree])
+                executionData.from = fileTree(dir: project.buildDir, includes: [
                         "jacoco/${testTaskName}.exec", "outputs/code_coverage/${sourceName}AndroidTest/connected/*coverage.ec"
                 ])
             }
 
             task "${testTaskName}CoverageVerification"(type: JacocoCoverageVerification, dependsOn: "${testTaskName}Coverage") {
                 group = 'Verification'
-                sourceDirectories = files([mainSrc])
-                classDirectories = files([debugTree])
-                executionData = fileTree(dir: project.buildDir, includes: [
+                sourceDirectories.from = files([mainSrc])
+                classDirectories.from = files([debugTree])
+                executionData.from = fileTree(dir: project.buildDir, includes: [
                         "jacoco/${testTaskName}.exec", "outputs/code_coverage/${sourceName}AndroidTest/connected/*coverage.ec"
                 ])
                 violationRules {
