@@ -22,7 +22,7 @@ object Versions {
     const val dagger = "2.23.1"
     const val espresso = "3.2.0"
     const val glide = "4.9.0"
-    const val kotlin = "1.3.31"
+    const val kotlin = "1.3.70"
     const val ktlint = "0.33.0"
     const val okhttp = "3.14.2"
     const val retrofit = "2.5.0"
@@ -31,7 +31,7 @@ object Versions {
 }
 
 object Plugins {
-    const val android = "com.android.tools.build:gradle:3.4.1"
+    const val android = "com.android.tools.build:gradle:3.6.2"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val versioning = "com.github.ben-manes:gradle-versions-plugin:0.21.0"
 }
@@ -47,7 +47,7 @@ object Libraries {
     const val androidxAnnotations = "androidx.annotation:annotation:1.1.0-rc01"
     const val androidxAppCompat = "androidx.appcompat:appcompat:1.0.2"
     const val androidxCardView = "androidx.cardview:cardview:1.0.0"
-    const val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta1"
+    const val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
     const val androidxCore = "androidx.core:core-ktx:1.1.0-beta01"
     const val androidxFragment = "androidx.fragment:fragment-ktx:1.0.0"
     const val androidxLifecycleExt = "androidx.lifecycle:lifecycle-extensions:2.1.0-beta01"

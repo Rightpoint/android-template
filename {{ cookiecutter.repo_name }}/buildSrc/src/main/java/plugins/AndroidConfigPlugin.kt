@@ -1,9 +1,9 @@
 package plugins
 
-import com.android.build.gradle.AbstractAppPlugin
+import com.android.build.gradle.internal.plugins.AbstractAppPlugin
+import com.android.build.gradle.internal.plugins.LibraryPlugin
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
-import com.android.build.gradle.LibraryPlugin
 import extensions.configure
 import extensions.configureTestOptions
 import org.gradle.api.Plugin
