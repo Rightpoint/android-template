@@ -32,9 +32,9 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:3.4.1")
+    implementation("com.android.tools.build:gradle:3.6.2")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31")
-    implementation("gradle.plugin.com.betomorrow.gradle:appcenter-plugin:1.1.16")
+    implementation("gradle.plugin.com.betomorrow.gradle:appcenter-plugin:1.2.1")
     implementation("org.eclipse.jgit:org.eclipse.jgit.pgm:5.3.1.201904271842-r")
     implementation("org.jlleitschuh.gradle:ktlint-gradle:8.0.0")
 }

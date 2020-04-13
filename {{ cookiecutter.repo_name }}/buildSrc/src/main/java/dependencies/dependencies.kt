@@ -31,7 +31,7 @@ object Versions {
 }
 
 object Plugins {
-    const val android = "com.android.tools.build:gradle:3.4.1"
+    const val android = "com.android.tools.build:gradle:3.6.2"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val versioning = "com.github.ben-manes:gradle-versions-plugin:0.21.0"
 }

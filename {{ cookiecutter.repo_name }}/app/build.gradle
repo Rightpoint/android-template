@@ -55,6 +55,8 @@ android {
             signingConfig signingConfigs.production
         }
     }
+
+    viewBinding.enabled = true
 }
 
 dependencies {
