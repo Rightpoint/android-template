@@ -47,7 +47,7 @@ object Libraries {
     const val androidxAnnotations = "androidx.annotation:annotation:1.1.0-rc01"
     const val androidxAppCompat = "androidx.appcompat:appcompat:1.0.2"
     const val androidxCardView = "androidx.cardview:cardview:1.0.0"
-    const val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta1"
+    const val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
     const val androidxCore = "androidx.core:core-ktx:1.1.0-beta01"
     const val androidxFragment = "androidx.fragment:fragment-ktx:1.0.0"
     const val androidxLifecycleExt = "androidx.lifecycle:lifecycle-extensions:2.1.0-beta01"
